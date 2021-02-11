@@ -1,6 +1,7 @@
 # NASible
-
 ![CI](https://github.com/PurpleNinja225/NASible/workflows/CI/badge.svg) 
+
+<img src="https://raw.githubusercontent.com/PurpleNinja225/nasible/master/misc/nasible_logo.png">
 
 A fork/parallel of Dave Stephan's ansible-nas, where we hope to build a standardized and flexible NAS
 with a vider variety of configuration available. We will strive to maintain application compatibility with ansible-nas as long as possible
