@@ -2,7 +2,7 @@
 
 ![CI](https://github.com/PurpleNinja225/NASible/workflows/CI/badge.svg) 
 
-A fork/parallel of Dave Stephan's ansible-nas, where we hope to build a standardized and flexible NAS 
+A fork/parallel of Dave Stephan's ansible-nas, where we hope to build a standardized and flexible NAS
 with a vider variety of configuration available. We will strive to maintain application compatibility with ansible-nas as long as possible
 and add any additional features to ansible-nas when possible.
 

@@ -8,10 +8,6 @@ After making changes to the playbook, you can apply them to the running VM by ru
 
 Once you're done testing, destroy the VM with `vagrant destroy`.
 
-## Travis CI
-
-Travis CI runs some sanity checks against branches once pushed to GitHub. These can be viewed [here](https://github.com/davestephens/ansible-nas/blob/master/.travis.yml).
-
 ### ansible-lint
 
 `ansible-lint` is run as part of the CI (and VSCode tasks are provided) to ensure the playbook confirms to some sort of standard! You may or may not agree with all of the rules, but using it keeps things nice and consistent.
