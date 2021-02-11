@@ -1,4 +1,3 @@
-# NASible
 ![CI](https://github.com/PurpleNinja225/NASible/workflows/CI/badge.svg) 
 
 <img src="https://raw.githubusercontent.com/PurpleNinja225/nasible/master/misc/nasible_logo.png">
