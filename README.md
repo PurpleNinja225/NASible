@@ -1,19 +1,19 @@
-# Ansible NAS
+# NASible
 
-![CI](https://github.com/davestephens/ansible-nas/workflows/CI/badge.svg) [![Gitter chat](https://img.shields.io/gitter/room/ansible-nas/chat.svg?logo=gitter&style=flat-square)](https://gitter.im/Ansible-NAS/Chat) [![license](https://img.shields.io/github/license/DAVFoundation/api_doc.svg?style=flat-square)](https://github.com/davestephens/ansible-nas/blob/master/LICENSE) [![Ko-fi](https://img.shields.io/static/v1.svg?label=ko-fi&message=Buy%20Me%20A%20Coffee&color=orange&style=flat-square&logo=buy-me-a-coffee)](https://ko-fi.com/davestephens)
+![CI](https://github.com/PurpleNinja225/NASible/workflows/CI/badge.svg) 
 
-After getting burned by broken FreeNAS updates one too many times, I figured I
-could do a much better job myself using just a stock Ubuntu install, some clever
-Ansible config and a bunch of Docker containers.
+A fork/parallel of Dave Stephan's ansible-nas, where we hope to build a standardized and flexible NAS 
+with a vider variety of configuration available. We will strive to maintain application compatibility with ansible-nas as long as possible
+and add any additional features to ansible-nas when possible.
 
-## What Ansible-NAS Can Set Up
+## What NASible Can Set Up
 
-* An awesome dashboard to your home server (Heimdall)
-* Any number of Samba shares or NFS exports for you to store your stuff
-* A BitTorrent client
+* An application dashboard to your home server and apps with Heimdall!
+* Configurable samba and NFS shares to store, share, and organize your content
+* Multiple BitTorrent clients
 * A Usenet downloader
 * Various media management tools - Sonarr, Sickchill, CouchPotato, Radarr, Bazarr, Lidarr
-* Media streaming via Plex or Emby
+* Media streaming via Plex, Emby, and Jellyfin!
 * Music streaming with Airsonic
 * An RSS newsfeed reader - Miniflux
 * A Dropbox replacement via Nextcloud
@@ -28,7 +28,7 @@ Ansible config and a bunch of Docker containers.
 * eBook management with Calibre-web
 * Content management with Joomla
 * A dual panel local file manager
-* Self-service media request web application
+* Self-service media requests with ombi
 
 ### Available Applications
 
@@ -93,31 +93,23 @@ Ansible config and a bunch of Docker containers.
 
 ## What This Could Do
 
-Ansible-NAS can run anything that's in a Docker image, which is why Portainer is
-included. A NAS configuration is a pretty personal thing based on what you
-download, what media you view, how many photos you take...so it's difficult to
-please everyone.
-
-That said, if specific functionality you want isn't included and you think
-others could benefit, add it and raise a PR!
+NASible can run anything that's in a Docker image, which is why Portainer is
+included. A NAS configuration is a pretty personal thing so NASible is just a framework to help get you started. 
+If you have some pretty usefull containers make a PR, other's will appriciate it.
 
 ## What This Doesn't Do
 
-Ansible NAS doesn't set up your disk partitions, primarily because getting it wrong can be incredibly destructive.
+NASible doesn't set up your disk partitions, primarily because getting it wrong can be incredibly destructive.
 That aside, configuring partitions is usually a one-time (or very infrequent) event, so there's not much to be
-gained by automating it. Check out the [docs](https://davestephens.github.io/ansible-nas) for recommended setups.
+gained by automating it. Check out the [docs](https://purpleninja225.github.io/NASible/) for recommended setups.
 
 ## Installation
 
-See [Installation](https://davestephens.github.io/ansible-nas/installation/).
-
-## Upgrading
-
-**The way Ansible-NAS configuration is structured has changed!** See [Upgrading](https://davestephens.github.io/ansible-nas/upgrading/) for more information. See the **Getting Help** section if you get stuck.
+See [Installation](https://purpleninja225.github.io/NASible/installation/).
 
 ## Documentation
 
-You can read the docs [here](https://davestephens.github.io/ansible-nas). PRs
+You can read the docs [here](https://purpleninja225.github.io/NASible/). PRs and requests
 for more documentation always welcome!
 
 ## Migrating from FreeNAS
@@ -133,19 +125,18 @@ Assuming that your Ubuntu system disk is separate from your storage (it should b
 
 ## Requirements
 
-* Ansible NAS targets the latest Ubuntu LTS release, which is currently Ubuntu
+* NASible targets the latest Ubuntu LTS release, which is currently Ubuntu
   Server 20.04 LTS.
-* You can run Ansible-NAS on whatever you like, read the docs for more info. I
-  use an HP Microserver.
+* You can run NASible on (almost) whatever you like, read the docs for more info.
+I run a Dell Poweredge r510 at work and a small custom NAS box.
 
 ## Getting Help
 
 Getting help is easy! You can:
 
-* Read the [docs](https://davestephens.github.io/ansible-nas)
-* Start a [discussion](https://github.com/davestephens/ansible-nas/discussions)
-* Raise an [issue](https://github.com/davestephens/ansible-nas/issues) if you think you've found a bug
-* Chat on [Gitter](https://gitter.im/Ansible-NAS/Chat)
+* Read the [docs](https://purpleninja225.github.io/NASible/)
+* Start a [discussion](https://purpleninja225.github.io/NASible//discussions)
+* Raise an [issue](https://github.com/PurpleNinja225/NASible/issues) if you think you've found a bug
 
 ## Contributing
 
@@ -153,7 +144,7 @@ Contributions are always welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## Support
 
-If you've enjoyed Ansible-NAS as much as I do working on it, please consider [buying me a coffee](https://ko-fi.com/davestephens) :coffee:
+If you've enjoyed NASible as much as I do working on it, please consider [buying the original creator a coffee](https://ko-fi.com/davestephens) :coffee:
 
 ## Thanks
 
