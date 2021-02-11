@@ -5,14 +5,8 @@ site_author: 'David Stephens & PurpleNinja225'
 
 # Configuration
 theme:
-  name: 'material'
+  name: 'cayman'
   language: 'en'
-  palette:
-    primary: 'indigo'
-    accent: 'indigo'
-  font:
-    text: 'Roboto'
-    code: 'Roboto Mono'
 
 
 # Repository

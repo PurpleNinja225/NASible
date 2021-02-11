@@ -1,1 +1,20 @@
+# Project information
+site_name: 'NASible'
+site_description: 'Build a fully functional NAS with an Ubuntu box and this playbook'
+site_author: 'David Stephens & PurpleNinja225'
+
+# Configuration
 theme: jekyll-theme-cayman
+
+# Repository
+repo_name: 'PurpleNinja225/NASible'
+repo_url: 'https://github.com/PurpleNinja225/NASible'
+
+# Copyright
+copyright: 'Copyright &copy; 2021 NASible'
+
+# Customization
+extra:
+  manifest: 'manifest.webmanifest'
+  social:
+    - icon: 'fontawesome/brands/github-alt'

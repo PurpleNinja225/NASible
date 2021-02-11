@@ -1,4 +1,4 @@
-![NASible Logo](https://raw.githubusercontent.com/davestephens/nasible/master/misc/nasible.png "NASible Logo")
+![NASible Logo](https://raw.githubusercontent.com/PurpleNinja225/nasible/master/misc/nasible_logo.png "NASible Logo")
 
 After getting burned by broken FreeNAS updates one too many times, I figured I
 could do a much better job myself using just a stock Ubuntu install, some clever
