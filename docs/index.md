@@ -1,8 +1,8 @@
-![Ansible-NAS Logo](https://raw.githubusercontent.com/davestephens/ansible-nas/master/misc/ansible-nas.png "Ansible-NAS Logo")
+![NASible Logo](https://raw.githubusercontent.com/davestephens/nasible/master/misc/nasible.png "NASible Logo")
 
 After getting burned by broken FreeNAS updates one too many times, I figured I
 could do a much better job myself using just a stock Ubuntu install, some clever
-Ansible config and a bunch of Docker containers. Ansible-NAS was born!
+Ansible config and a bunch of Docker containers. NASible was born!
 
 ## Features
 

@@ -1,8 +1,7 @@
 ---
 name: Application Request
-about: Suggest an application to be added to Ansible-NAS
-title: ''
-labels: 'enhancement'
+about: Suggest an application to be added to NASible
+labels: 'Application Addition'
 assignees: ''
 
 ---

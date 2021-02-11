@@ -15,7 +15,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="ansible-nas.svg">
+   sodipodi:docname="nasible.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -64,7 +64,7 @@
          y="119.78419"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.11111069px;font-family:'Arimo for Powerline';-inkscape-font-specification:'Arimo for Powerline';word-spacing:-1.85208333px;fill:#000080;stroke-width:0.26458332;"><tspan
    style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Arimo for Powerline';-inkscape-font-specification:'Arimo for Powerline Bold';word-spacing:-1.85208333px;"
-   id="tspan3749">ANSIBLE </tspan>NAS</tspan></text>
+   id="tspan3749">NAS </tspan>ible</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"

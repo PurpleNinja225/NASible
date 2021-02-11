@@ -1,4 +1,4 @@
-So you've installed Ansible-NAS. Now what?
+So you've installed NASible. Now what?
 
 The first thing to do is to configure [Heimdall](https://heimdall.site/) as the
 dashboard of your new NAS, because most of the applications included come with a

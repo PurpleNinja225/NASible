@@ -3,10 +3,10 @@
 Homepage: [https://emby.media/](https://emby.media/)
 
 Emby is a mostly open-source media server with a client-server model. This
-install for Ansible-NAS provides a server, which various clients can then
+install for NASible provides a server, which various clients can then
 connect to from platforms such as other computers, smartphones and smart TVs.
 
-Note that [Plex](https://www.plex.tv/), also included in Ansible-NAS, has a very
+Note that [Plex](https://www.plex.tv/), also included in NASible, has a very
 similar functionality.
 
 ## Usage
@@ -19,7 +19,7 @@ parameters you can edit such as `movies_root` and `tv_root` lower down.
 The emby web interface can be found at port 8096 (http) or 8920 (https, if
 configured) of your NAS. Heimdall has a dedicated icon for emby. 
 
-By default, Ansible-NAS gives emby read/write access to the folders where your
+By default, NASible gives emby read/write access to the folders where your
 movies and TV shows are stored. To change this to read-only, edit the following
 lines in `all.yml`:
 

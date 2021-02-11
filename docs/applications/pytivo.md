@@ -16,7 +16,7 @@ Set `pytivo_enabled: true` in your `group_vars/all.yml` file. The PyTivo
 web interface can be found at http://ansible_nas_host_or_ip:9032.
 
 ## Specific Configuration
-PyTivo needs to be configured for use. Your ansible-nas media is
+PyTivo needs to be configured for use. Your nasible media is
 available to share via:
 * /movies - Where your movies are stored
 * /music - Where your music is stored

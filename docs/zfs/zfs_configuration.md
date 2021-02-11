@@ -1,18 +1,18 @@
 # ZFS Configuration
 
-This text deals with specific ZFS configuration questions for Ansible-NAS. If
+This text deals with specific ZFS configuration questions for NASible. If
 you are new to ZFS and are looking for the big picture, please read the [ZFS
 overview](zfs_overview.md) introduction first.
 
 ## Just so there is no misunderstanding
 
-Unlike other NAS variants, Ansible-NAS does not install, configure or manage the
+Unlike other NAS variants, NASible does not install, configure or manage the
 disks or file systems for you. It doesn't care which file system you use - ZFS,
 Btrfs, XFS or EXT4, take your pick. Nor does it provides a mechanism for
 snapshots or disk monitoring. As Tony Stark said to Loki in _Avengers_: It's all
 on you.
 
-However, Ansible-NAS has traditionally been used with the powerful ZFS
+However, NASible has traditionally been used with the powerful ZFS
 filesystem. Since out of the box support for [ZFS on
 Linux](https://zfsonlinux.org/) with Ubuntu is comparatively new, this text
 shows how to set up a simple storage configuration. To paraphrase Nick Fury from
@@ -32,12 +32,12 @@ Always, always, always backup your data.
 ## The basic setup
 
 For this example, we're assuming two identical spinning rust hard drives for
-Ansible-NAS storage. These two drives will be **mirrored** to provide
+NASible storage. These two drives will be **mirrored** to provide
 redundancy. The actual Ubuntu system will be on a different drive and is not our
 concern.
 
 > [Root on ZFS](https://openzfs.github.io/openzfs-docs/Getting%20Started/Ubuntu/Ubuntu%2020.04%20Root%20on%20ZFS.html)
-is possible, but not something that has been tested with Ansible-NAS.
+is possible, but not something that has been tested with NASible.
 
 
 The Ubuntu kernel is already ready for ZFS. We only need the utility package
@@ -126,7 +126,7 @@ discuss exceptions for compressed media files later).
 ## Creating filesystems
 
 To actually store the data, we need filesystems (also known as "datasets"). For
-our very simple default Ansible-NAS setup, we will create two: One filesystem
+our very simple default NASible setup, we will create two: One filesystem
 for movies (`movies_root` in `all.yml`) and one for downloads
 (`downloads_root`). 
 

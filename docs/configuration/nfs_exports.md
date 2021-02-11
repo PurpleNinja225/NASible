@@ -1,12 +1,12 @@
 # NFS Exports
 
-Ansible-NAS uses the awesome [geerlingguy.nfs](https://github.com/geerlingguy/ansible-role-nfs) Ansible role to configure NFS exports.
+NASible uses the awesome [geerlingguy.nfs](https://github.com/geerlingguy/ansible-role-nfs) Ansible role to configure NFS exports.
 
 More info on configuring NFS exports can be found [here](https://help.ubuntu.com/community/SettingUpNFSHowTo#Shares).
 
 ## NFS Examples
 
-Ansible-NAS shares are defined in the `nfs_exports` section within `group_vars/all.yml`. The example provided will allow anyone to read the data in `{{ nfs_shares_root }}/public` on your Ansible-NAS box.
+NASible shares are defined in the `nfs_exports` section within `group_vars/all.yml`. The example provided will allow anyone to read the data in `{{ nfs_shares_root }}/public` on your NASible box.
 
 ## Permissions
 

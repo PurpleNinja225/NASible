@@ -1,6 +1,6 @@
 # Contributing
 
-Contributing to Ansible-NAS is easy! Add your functionality, then raise a pull request on GitHub. A few things to bear in mind:
+Contributing to NASible is easy! Add your functionality, then raise a pull request on GitHub. A few things to bear in mind:
 
 * Restrict pull requests to one piece of functionality or bugfix at a time.
 * Test your new functionality or bugfix using the included `tests/test-vagrant.sh` script to spin up a test VM.
@@ -22,10 +22,10 @@ A typical new application PR will include 2 new files (`docs/applications/applic
 * If you break the build with your PR, please fix it :)
 * Pull requests that unintentionally touch files, or that show files as removed then re-added will be rejected.
 * Squash your commits before creating a PR.
-* Don't mess with line endings, or tabs vs. spaces. 
+* Don't mess with line endings, or tabs vs. spaces.
 * Please know that your efforts are appreciated, thanks! :+1:
 
 # Development Environment
 
-* Development of Ansible-NAS is carried out in [Visual Studio Code](https://code.visualstudio.com/) - you'll get some nice
+* Development of NASible is carried out in [Visual Studio Code](https://code.visualstudio.com/) - you'll get some nice
 recommended extensions and task setups if you do the same.

@@ -27,17 +27,17 @@
 
 
     ###
-    ### Ansible-NAS Roles
+    ### NASible Roles
     ###
-    - role: ansible-nas-general
+    - role: NASible-general
       tags:
-        - ansible-nas-general
-        - ansible-nas
+        - NASible-general
+        - NASible
 
-    - role: ansible-nas-docker
+    - role: NASible-docker
       tags:
-        - ansible-nas-docker
-        - ansible-nas
+        - NASible-docker
+        - NASible
 
 
     ###

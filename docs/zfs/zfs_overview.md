@@ -2,7 +2,7 @@
 
 This is a general overview of the ZFS file system for people who are new to it.
 If you have some experience and are actually looking for specific information
-about how to configure ZFS for Ansible-NAS, check out the [ZFS example
+about how to configure ZFS for NASible, check out the [ZFS example
 configuration](zfs_configuration.md).  
 
 ## What is ZFS and why would I want it?
@@ -44,10 +44,10 @@ FreeBSD and FreeNAS make extensive use of ZFS. What is holding ZFS back on Linux
 are [licensing issues](https://en.wikipedia.org/wiki/OpenZFS#History) beyond the
 scope of this document. 
 
-Ansible-NAS doesn't actually specify a filesystem - you can use EXT4, XFS or
+NASible doesn't actually specify a filesystem - you can use EXT4, XFS or
 Btrfs as well. However, ZFS not only provides the benefits listed above, but
 also lets you use your hard drives with different operating systems. Some people
-now using Ansible-NAS came from FreeNAS, and were able to `export` their ZFS
+now using NASible came from FreeNAS, and were able to `export` their ZFS
 storage drives there and `import` them to Ubuntu. On the other hand, if you ever
 decide to switch back to FreeNAS or maybe want to use FreeBSD instead of Linux,
 you should be able to use the same ZFS pools. 
@@ -141,7 +141,7 @@ circles](https://www.ixsystems.com/community/threads/does-freenas-really-need-8g
 Curiously, FreeBSD, the basis of FreeNAS, will run with [1
 GB](https://wiki.freebsd.org/ZFSTuningGuide). The [ZFS on Linux
 FAQ](https://github.com/zfsonlinux/zfs/wiki/FAQ#hardware-requirements), which is
-more relevant for Ansible-NAS, states under "suggested hardware":
+more relevant for NASible, states under "suggested hardware":
 
 > 8GB+ of memory for the best performance. It's perfectly possible to run with
 > 2GB or less (and people do), but you'll need more if using deduplication.

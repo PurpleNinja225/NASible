@@ -1,4 +1,4 @@
-Ansible-NAS currently assumes you know your way around a server. This page is an
+NASible currently assumes you know your way around a server. This page is an
 overview for absolute NAS beginners so they can decide if it is right for them.
 
 ## The big picture
@@ -24,10 +24,10 @@ does not support the [Docker](https://www.docker.com/) containers the way Linux
 does. Also, the Linux ecosystem is larger. On the other hand, very few Linux
 distributions include ZFS out of the box because of licensing issues.
 
-Ansible-NAS in its default form attempts to have the best of both worlds by
+NASible in its default form attempts to have the best of both worlds by
 using Docker on Linux with ZFS. This is possible because the
 [Ubuntu](https://www.ubuntu.com/server) Linux distribution supports both
-technologies. As the name says, Ansible-NAS uses
+technologies. As the name says, NASible uses
 [Ansible](https://www.ansible.com/) server automation which is usually deployed
 on big multi-machine enterprise systems, not small home servers the size of a
 breadbox.
@@ -40,12 +40,12 @@ providers have lots of resources to help you get started with your own hardware.
 FreeNAS for instance comes with extensive documentation, good introductions to
 ZFS and other topics, and a large community to lean on.
 
-With Ansible-NAS, at this point at least, you're pretty much on your own. Though
-there is a [Gitter](https://gitter.im/Ansible-NAS/Chat) chat room (see
+With NASible, at this point at least, you're pretty much on your own. Though
+there is a [Gitter](https://gitter.im/NASible/Chat) chat room (see
 [support](support.md)), you're expected to have some familiarity with the
 technologies involved and be able to set up the basic stuff yourself.
 
-As a to-do list, before you can even install Ansible-NAS, you'll have to:
+As a to-do list, before you can even install NASible, you'll have to:
 
 1. Choose, buy, configure, and test your own **hardware**. If you're paranoid (a
    good mindset when dealing with servers), you'll probably want an
@@ -66,18 +66,18 @@ You will probably want to install a specialized filesystem for bulk storage such
 as [ZFS](http://www.open-zfs.org/wiki/Main_Page) or
 [Btrfs](https://btrfs.wiki.kernel.org/index.php/Main_Page). Both offer features
 such as snapshots, checksumming and scrubbing to protect your data against
-bitrot, ransomware and other nasties. Ansible-NAS historically prefers **ZFS**
+bitrot, ransomware and other nasties. NASible historically prefers **ZFS**
 because this lets you swap storage pools with
 [FreeNAS](https://freenas.org/zfs/). A [brief introduction](zfs/zfs_overview.md)
-to ZFS is included in the Ansible-NAS documentation, as well as [an
+to ZFS is included in the NASible documentation, as well as [an
 example](zfs/zfs_configuration.md) of a very simple ZFS setup.
 
 After that, you can continue with the actual [installation](installation.md) of
-Ansible-NAS.
+NASible.
 
 ## How to experiment
 
-The easiest way to take Ansible-NAS for a spin is in a virtual machine, for
+The easiest way to take NASible for a spin is in a virtual machine, for
 instance in [VirtualBox](https://www.virtualbox.org/). You'll want to create
 three virtual hard drives for testing: One of the actual NAS, and the two others
 to create a mirrored ZFS pool. This will let you experiment with installing,

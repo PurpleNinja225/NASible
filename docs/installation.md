@@ -3,7 +3,7 @@ does. Run it against a VM and make sure you're happy. ***Do not*** blindly
 download code from the internet and trust that it's going to work as you expect.
 :skull: :skull: :skull:
 
-You can run Ansible-NAS from the computer you plan to use for your NAS, or from a remote controlling machine. The steps for deployment are exactly the same, just pay attention to editing the inventory file in step 7.
+You can run NASible from the computer you plan to use for your NAS, or from a remote controlling machine. The steps for deployment are exactly the same, just pay attention to editing the inventory file in step 7.
 
 1. Enable the Ubuntu Universe repository:
 
@@ -19,18 +19,18 @@ You can run Ansible-NAS from the computer you plan to use for your NAS, or from 
 
     `sudo apt install ansible`
 
-3. Clone Ansible-NAS:
+3. Clone NASible:
 
-    `git clone https://github.com/davestephens/ansible-nas.git && cd ansible-nas`
+    `git clone https://github.com/davestephens/nasible.git && cd nasible`
 
 4. Create your own inventory and config files by copying `inventories/sample` to your own directory:
 
-    `cp -rfp inventories/sample inventories/my-ansible-nas`
+    `cp -rfp inventories/sample inventories/my-nasible`
 
-5. Review `group_vars/all.yml`. Change settings by overriding them in `inventories/my-ansible-nas/group_vars/nas.yml`.
+5. Review `group_vars/all.yml`. Change settings by overriding them in `inventories/my-nasible/group_vars/nas.yml`.
 
-6. Update `inventories/my-ansible-nas/inventory`.
+6. Update `inventories/my-nasible/inventory`.
 
 7. Install the dependent roles: `ansible-galaxy install -r requirements.yml` (you might need `sudo` to install Ansible roles).
 
-8. Run the playbook - something like `ansible-playbook -i inventories/my-ansible-nas/inventory nas.yml -b -K` should do you nicely.
+8. Run the playbook - something like `ansible-playbook -i inventories/my-nasible/inventory nas.yml -b -K` should do you nicely.

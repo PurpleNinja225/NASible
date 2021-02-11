@@ -5,13 +5,14 @@ PLAYBOOK_DIR=$DIR/..
 header() {
     clear
     cat <<"EndOfMessage"
-                     ._____.   .__
-_____    ____   _____|__\_ |__ |  |   ____             ____ _____    ______
-\__  \  /    \ /  ___/  || __ \|  | _/ __ \   ______  /    \\__  \  /  ___/
- / __ \|   |  \\___ \|  || \_\ \  |_\  ___/  /_____/ |   |  \/ __ \_\___ \
-(____  /___|  /____  >__||___  /____/\___  >         |___|  (____  /____  >
-     \/     \/     \/        \/          \/               \/     \/     \/
-   a n s i b l e - n a s      https://github.com/davestephens/ansible-nas
+ooooo      ooo       .o.        .oooooo..o  o8o   .o8       oooo
+`888b.     `8'      .888.      d8P'    `Y8  `"'  "888       `888
+ 8 `88b.    8      .8"888.     Y88bo.      oooo   888oooo.   888   .ooooo.
+ 8   `88b.  8     .8' `888.     `"Y8888o.  `888   d88' `88b  888  d88' `88b
+ 8     `88b.8    .88ooo8888.        `"Y88b  888   888   888  888  888ooo888
+ 8       `888   .8'     `888.  oo     .d8P  888   888   888  888  888    .o
+o8o        `8  o88o     o8888o 8""88888P'  o888o  `Y8bod8P' o888o `Y8bod8P'
+   N A S i b l e      https://github.com/PurpleNinja225/nasible
 
 EndOfMessage
     sleep 5
@@ -27,7 +28,7 @@ fatal_error() {
 }
 
 test_needs() {
-    command -v $1 >/dev/null 2>&1 || fatal_error "Testing Ansible-NAS requires $1 but it's not installed. Please install it and try again."
+    command -v $1 >/dev/null 2>&1 || fatal_error "Testing NASible requires $1 but it's not installed. Please install it and try again."
 }
 
 testing_init() {

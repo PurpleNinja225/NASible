@@ -16,7 +16,7 @@
   with_items:
     - "{{ grafana_data_directory }}"
     - "{{ grafana_data_directory }}/data"
-    - "{{ grafana_data_directory }}/data/dashboards/ansible-nas"
+    - "{{ grafana_data_directory }}/data/dashboards/nasible"
     - "{{ grafana_data_directory }}/config/"
     - "{{ grafana_data_directory }}/config/provisioning"
     - "{{ grafana_data_directory }}/config/provisioning/datasources"
@@ -83,18 +83,18 @@
 
 - name: Template Grafana data source
   template:
-    src: grafana/provisioning/datasources/ansible-nas.yml
-    dest: "{{ grafana_data_directory }}/config/provisioning/datasources/ansible-nas.yml"
+    src: grafana/provisioning/datasources/nasible.yml
+    dest: "{{ grafana_data_directory }}/config/provisioning/datasources/nasible.yml"
 
-- name: Copy Ansible-NAS Dashboard Provisioner
+- name: Copy NASible Dashboard Provisioner
   copy:
-    src: grafana/provisioning/dashboards/ansible-nas.yml
-    dest: "{{ grafana_data_directory }}/config/provisioning/dashboards/ansible-nas.yml"
+    src: grafana/provisioning/dashboards/nasible.yml
+    dest: "{{ grafana_data_directory }}/config/provisioning/dashboards/nasible.yml"
 
-- name: Copy Ansible-NAS Dashboard
+- name: Copy NASible Dashboard
   copy:
-    src: grafana/dashboards/ansible-nas/ansible-nas-overview.json
-    dest: "{{ grafana_data_directory }}/data/dashboards/ansible-nas/ansible-nas-overview.json"
+    src: grafana/dashboards/nasible/nasible-overview.json
+    dest: "{{ grafana_data_directory }}/data/dashboards/nasible/nasible-overview.json"
 
 - name: Grafana
   docker_container:

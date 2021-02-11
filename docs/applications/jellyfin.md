@@ -4,7 +4,7 @@ Homepage: [https://jellyfin.github.io/](https://jellyfin.github.io/)
 
 Jellyfin is a Free Software Media System that puts you in control of managing and streaming your media. It is an alternative to the proprietary Emby and Plex, to provide media from a dedicated server to end-user devices via multiple apps. Jellyfin is descended from Emby's 3.5.2 release and ported to the .NET Core framework to enable full cross-platform support. There are no strings attached, no premium licenses or features, and no hidden agendas: just a team who want to build something better and work together to achieve it. We welcome anyone who is interested in joining us in our quest!
 
-Note that [Plex](https://www.plex.tv/), also included in Ansible-NAS, has a very
+Note that [Plex](https://www.plex.tv/), also included in NASible, has a very
 similar functionality.
 
 ## Usage
@@ -17,7 +17,7 @@ parameters you can edit such as `movies_root`, `tv_root` or `music_root` lower d
 The jellyfin web interface can be found at port 8896 (http) or 8928 (https, if
 configured) of your NAS.
 
-By default, Ansible-NAS gives jellyfin read/write access to the folders where your
+By default, NASible gives jellyfin read/write access to the folders where your
 movies, TV shows and music are stored. To change this to read-only, edit the following
 lines in `all.yml`:
 
