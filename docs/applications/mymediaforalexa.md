@@ -8,4 +8,4 @@ My Media lets you stream your music collection to your Amazon Echo or Amazon Dot
 
 Set `mymediaforalexa_enabled: true` in your `inventories/<your_inventory>/nas.yml` file.
 
-The My Media for Alexa web interface can be found at http://ansible_nas_host_or_ip:52051.
+The My Media for Alexa web interface can be found at http://nasible_host_or_ip:52051.

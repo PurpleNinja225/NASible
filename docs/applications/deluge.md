@@ -11,7 +11,7 @@
 
 Set `deluge_enabled: true` in your `inventories/<your_inventory>/nas.yml` file.
 
-Deluge's web interface can be found at http://ansible_nas_host_or_ip:8112
+Deluge's web interface can be found at http://nasible_host_or_ip:8112
 
 Upon first viewing you will be prompted for a password. The default is `deluge` It is recommended that you change this password in the preferences menu.
 

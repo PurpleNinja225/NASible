@@ -1,15 +1,15 @@
 ---
 - name: Create nasible group
   group:
-    name: nasible
+    name: "{{ nasible_user }}"
     state: present
 
 - name: Create nasible user
   user:
-    name: nasible
+    name: "{{ nasible_user }}"
     state: present
     system: yes
     update_password: on_create
     create_home: no
-    group: nasible
+    group: "{{ nasible_user }}"
     shell: /usr/sbin/nologin

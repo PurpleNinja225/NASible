@@ -14,4 +14,4 @@ I recommend using the mobile app, which will sync with this installation so you 
 
 The default credentials are wallabag:wallabag
 
-The wallabag web interface can be found at http://ansible_nas_host_or_ip:7780.
+The wallabag web interface can be found at http://nasible_host_or_ip:7780.

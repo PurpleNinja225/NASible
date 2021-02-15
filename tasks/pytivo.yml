@@ -25,15 +25,15 @@
       - "{{ pytivo_podcasts_directory }}:/podcasts:ro"
     network_mode: "host"
     env:
-      TZ: "{{ ansible_nas_timezone }}"
+      TZ: "{{ nasible_timezone }}"
       PUID: "{{ pytivo_user_id }}"
       PGID: "{{ pytivo_group_id }}"
     restart_policy: unless-stopped
     memory: 1g
     labels:
       traefik.enable: "{{ pytivo_available_externally }}"
-      traefik.http.routers.pytivo.rule: "Host(`pytivo.{{ ansible_nas_domain }}`)"
+      traefik.http.routers.pytivo.rule: "Host(`pytivo.{{ nasible_domain }}`)"
       traefik.http.routers.pytivo.tls.certresolver: "letsencrypt"
-      traefik.http.routers.pytivo.tls.domains[0].main: "{{ ansible_nas_domain }}"
-      traefik.http.routers.pytivo.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+      traefik.http.routers.pytivo.tls.domains[0].main: "{{ nasible_domain }}"
+      traefik.http.routers.pytivo.tls.domains[0].sans: "*.{{ nasible_domain }}"
       traefik.http.services.pytivo.loadbalancer.server.port: "9032"

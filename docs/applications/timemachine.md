@@ -19,7 +19,7 @@ The Samba server included in the Time Machine docker container logs to `STDOUT` 
 
 <dl>
   <dt><strong>timemachine_data_directory</strong></dt>
-  <dd>The absolute path on Ansible NAS where the backup files will be stored</dd>
+  <dd>The absolute path on NASible where the backup files will be stored</dd>
   <dt><strong>timemachine_volume_size_limit</strong></dt>
   <dd>The maximum amount of space Time Machine can use for the backups in units of MiB.  Set it to 0 for no limit.</dd>
   <dt><strong>timemachine_share_name</strong></dt>

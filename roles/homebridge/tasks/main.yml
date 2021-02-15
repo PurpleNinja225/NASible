@@ -16,7 +16,7 @@
       - "{{ homebridge_config_directory }}:/homebridge"
     network_mode: "host"
     env:
-      TZ: "{{ ansible_nas_timezone }}"
+      TZ: "{{ nasible_timezone }}"
       PGID: "{{ homebridge_group_id }}"
       PUID: "{{ homebridge_user_id }}"
       HOMEBRIDGE_CONFIG_UI: "1"
@@ -25,8 +25,8 @@
     memory: "{{ homebridge_memory }}"
     labels:
       traefik.enable: "{{ homebridge_available_externally }}"
-      traefik.http.routers.homebridge.rule: "Host(`{{ homebridge_hostname }}.{{ ansible_nas_domain }}`)"
+      traefik.http.routers.homebridge.rule: "Host(`{{ homebridge_hostname }}.{{ nasible_domain }}`)"
       traefik.http.routers.homebridge.tls.certresolver: "letsencrypt"
-      traefik.http.routers.homebridge.tls.domains[0].main: "{{ ansible_nas_domain }}"
-      traefik.http.routers.homebridge.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+      traefik.http.routers.homebridge.tls.domains[0].main: "{{ nasible_domain }}"
+      traefik.http.routers.homebridge.tls.domains[0].sans: "*.{{ nasible_domain }}"
       traefik.http.services.homebridge.loadbalancer.server.port: "8087"

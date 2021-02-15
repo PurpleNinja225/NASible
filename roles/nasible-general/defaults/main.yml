@@ -1,12 +1,15 @@
 ---
-# Sets the hostname of your Ansible NAS
-ansible_nas_hostname: nasible
+# Sets the hostname of your NASible installation
+nasible_hostname: nasible
+
+# Sets a generic password for NASible containers that are available
+nasible_default_password: nasiblesecret
 
 # Update all apt packages when playbook is run
 keep_packages_updated: false
 
 # Extra packages to install
-ansible_nas_extra_packages:
+nasible_extra_packages:
   - smartmontools
   - htop
   - zfsutils-linux
@@ -15,6 +18,6 @@ ansible_nas_extra_packages:
   - lm-sensors
   - ctop
 
-# Sets the timezone for your Ansible NAS
+# Sets the timezone for NASible
 # You can find a list here https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-ansible_nas_timezone: Etc/UTC
+nasible_timezone: Etc/UTC

@@ -22,15 +22,15 @@
       - "{{ jellyfin_port_http }}:8096"
       - "{{ jellyfin_port_https }}:8920"
     env:
-      TZ: "{{ ansible_nas_timezone }}"
+      TZ: "{{ nasible_timezone }}"
       PUID: "{{ jellyfin_user_id }}"
       PGID: "{{ jellyfin_group_id }}"
     restart_policy: unless-stopped
     memory: 1g
     labels:
       traefik.enable: "{{ jellyfin_available_externally }}"
-      traefik.http.routers.jellyfin.rule: "Host(`jellyfin.{{ ansible_nas_domain }}`)"
+      traefik.http.routers.jellyfin.rule: "Host(`jellyfin.{{ nasible_domain }}`)"
       traefik.http.routers.jellyfin.tls.certresolver: "letsencrypt"
-      traefik.http.routers.jellyfin.tls.domains[0].main: "{{ ansible_nas_domain }}"
-      traefik.http.routers.jellyfin.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+      traefik.http.routers.jellyfin.tls.domains[0].main: "{{ nasible_domain }}"
+      traefik.http.routers.jellyfin.tls.domains[0].sans: "*.{{ nasible_domain }}"
       traefik.http.services.jellyfin.loadbalancer.server.port: "8096"

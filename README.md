@@ -1,4 +1,4 @@
-![CI](https://github.com/PurpleNinja225/NASible/workflows/CI/badge.svg) 
+[![CI](https://github.com/PurpleNinja225/NASible/workflows/CI/badge.svg)](https://github.com/PurpleNinja225/NASible/actions?query=workflow%3ACI)
 
 <img src="https://raw.githubusercontent.com/PurpleNinja225/nasible/master/misc/nasible_logo.png">
 

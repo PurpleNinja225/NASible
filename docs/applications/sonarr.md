@@ -7,7 +7,7 @@ Homepages: [sonarr](https://sonarr.tv/)
 
 Set `sonarr_enabled: true` in your `/inventories/[my inventory]/group_vars/nas.yml` file.
 
-The Sonarr web interface can be found at `http://ansible_nas_host_or_ip:8989` by default
+The Sonarr web interface can be found at `http://nasible_host_or_ip:8989` by default
 
 
 ## Specific Configuration

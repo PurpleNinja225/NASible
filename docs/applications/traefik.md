@@ -13,7 +13,7 @@ See [External Access](../configuration/external_access.md) for more info.
 
 Set `traefik_enabled: true` in your `inventories/<your_inventory>/nas.yml` file.
 
-Traefik's web interface can be found at http://ansible_nas_host_or_ip:8083.
+Traefik's web interface can be found at http://nasible_host_or_ip:8083.
 
 ## Specific Configuration
 

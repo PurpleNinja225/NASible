@@ -37,8 +37,8 @@
     memory: 1g
     labels:
       traefik.enable: "{{ miniflux_available_externally }}"
-      traefik.http.routers.miniflux.rule: "Host(`miniflux.{{ ansible_nas_domain }}`)"
+      traefik.http.routers.miniflux.rule: "Host(`miniflux.{{ nasible_domain }}`)"
       traefik.http.routers.miniflux.tls.certresolver: "letsencrypt"
-      traefik.http.routers.miniflux.tls.domains[0].main: "{{ ansible_nas_domain }}"
-      traefik.http.routers.miniflux.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+      traefik.http.routers.miniflux.tls.domains[0].main: "{{ nasible_domain }}"
+      traefik.http.routers.miniflux.tls.domains[0].sans: "*.{{ nasible_domain }}"
       traefik.http.services.miniflux.loadbalancer.server.port: "8080"

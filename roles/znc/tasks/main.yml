@@ -24,8 +24,8 @@
     memory: "{{ znc_memory }}"
     labels:
       traefik.enable: "{{ znc_available_externally }}"
-      traefik.http.routers.znc.rule: "Host(`{{ znc_hostname }}.{{ ansible_nas_domain }}`)"
+      traefik.http.routers.znc.rule: "Host(`{{ znc_hostname }}.{{ nasible_domain }}`)"
       traefik.http.routers.znc.tls.certresolver: "letsencrypt"
-      traefik.http.routers.znc.tls.domains[0].main: "{{ ansible_nas_domain }}"
-      traefik.http.routers.znc.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+      traefik.http.routers.znc.tls.domains[0].main: "{{ nasible_domain }}"
+      traefik.http.routers.znc.tls.domains[0].sans: "*.{{ nasible_domain }}"
       traefik.http.services.znc.loadbalancer.server.port: "6677"

@@ -13,7 +13,7 @@ Desktop. [http://pytivo.org/](http://pytivo.org/)
 
 ## Usage
 Set `pytivo_enabled: true` in your `group_vars/all.yml` file. The PyTivo
-web interface can be found at http://ansible_nas_host_or_ip:9032.
+web interface can be found at http://nasible_host_or_ip:9032.
 
 ## Specific Configuration
 PyTivo needs to be configured for use. Your nasible media is

@@ -8,7 +8,7 @@ Free and Open Source download manager written in Python and designed to be extre
 
 Set `pyload_enabled: true` in your `inventories/<your_inventory>/nas.yml` file.
 
-pyLoad's web interface can be found at http://ansible_nas_host_or_ip:8000
+pyLoad's web interface can be found at http://nasible_host_or_ip:8000
 
 ## Specific Configuration
 

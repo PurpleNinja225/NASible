@@ -14,7 +14,7 @@
       - "{{ calibre_data_directory }}/config:/config"
       - "{{ calibre_books_root }}:/books"
     env:
-      TZ: "{{ ansible_nas_timezone }}"
+      TZ: "{{ nasible_timezone }}"
       PUID: "{{ calibre_user_id }}"
       PGID: "{{ calibre_group_id }}"
       DOCKER_MODS: "{{ calibre_ebook_conversion }}"
@@ -24,8 +24,8 @@
     memory: 1g
     labels:
       traefik.enable: "{{ calibre_available_externally }}"
-      traefik.http.routers.calibre.rule: "Host(`calibre.{{ ansible_nas_domain }}`)"
+      traefik.http.routers.calibre.rule: "Host(`calibre.{{ nasible_domain }}`)"
       traefik.http.routers.calibre.tls.certresolver: "letsencrypt"
-      traefik.http.routers.calibre.tls.domains[0].main: "{{ ansible_nas_domain }}"
-      traefik.http.routers.calibre.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+      traefik.http.routers.calibre.tls.domains[0].main: "{{ nasible_domain }}"
+      traefik.http.routers.calibre.tls.domains[0].sans: "*.{{ nasible_domain }}"
       traefik.http.services.calibre.loadbalancer.server.port: "8083"

@@ -12,8 +12,8 @@
   - name: "Permission share data"
     file:
       path: "{{ item.path }}"
-      owner: nasible
-      group: nasible
+      owner: "{{ nasible_user }}"
+      group: "{{ nasible_user }}"
       mode: "u=rwX,g=rwX,o=rX"
       recurse: true
     loop: "{{ samba_shares }}"

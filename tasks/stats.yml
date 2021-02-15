@@ -45,7 +45,7 @@
     restart_policy: unless-stopped
     env:
       HDDTEMP_ARGS: "-q -d -F /dev/sd*"
-      TZ: "{{ ansible_nas_timezone }}"
+      TZ: "{{ nasible_timezone }}"
     memory: 128m
 
 - name: Template telegraf.conf
@@ -110,8 +110,8 @@
     memory: 1g
     labels:
       traefik.enable: "{{ grafana_available_externally }}"
-      traefik.http.routers.grafana.rule: "Host(`grafana.{{ ansible_nas_domain }}`) "
+      traefik.http.routers.grafana.rule: "Host(`grafana.{{ nasible_domain }}`) "
       traefik.http.routers.grafana.tls.certresolver: "letsencrypt"
-      traefik.http.routers.grafana.tls.domains[0].main: "{{ ansible_nas_domain }}"
-      traefik.http.routers.grafana.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+      traefik.http.routers.grafana.tls.domains[0].main: "{{ nasible_domain }}"
+      traefik.http.routers.grafana.tls.domains[0].sans: "*.{{ nasible_domain }}"
       traefik.http.grafana.netdata.loadbalancer.server.port: "3000"

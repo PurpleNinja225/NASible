@@ -26,6 +26,6 @@ transmission_openvpn_hostname: "transmission_openvpn"
 # If you're using Transmission with a VPN, you'll need to set these credentials.
 # See https://github.com/haugene/docker-transmission-openvpn/ for supported VPN providers.
 openvpn_username: leisure-suit-larry
-openvpn_password: secretpassword
+openvpn_password: "{{ nasible_default_password }}"
 openvpn_provider: AWESOMEVPNPROVIDER
 openvpn_config: United-Kingdom

@@ -8,4 +8,4 @@ MiniDLNA is server software with the aim of being fully compliant with DLNA/UPnP
 
 Set `minidlna_enabled: true` in your `inventories/<your_inventory>/nas.yml` file.
 
-The very basic MiniDLNA web interface can be found at http://ansible_nas_host_or_ip:8201.
+The very basic MiniDLNA web interface can be found at http://nasible_host_or_ip:8201.

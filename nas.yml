@@ -29,15 +29,15 @@
     ###
     ### NASible Roles
     ###
-    - role: NASible-general
+    - role: nasible-general
       tags:
-        - NASible-general
-        - NASible
+        - nasible-general
+        - nasible
 
-    - role: NASible-docker
+    - role: nasible-docker
       tags:
-        - NASible-docker
-        - NASible
+        - nasible-docker
+        - nasible
 
 
     ###

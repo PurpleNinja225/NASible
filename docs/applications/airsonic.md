@@ -8,7 +8,7 @@ Airsonic is a free, web-based media streamer, providing ubiquitous access to you
 
 Set `airsonic_enabled: true` in your `inventories/<your_inventory>/nas.yml` file.
 
-The Airsonic web interface can be found at http://ansible_nas_host_or_ip:4040.
+The Airsonic web interface can be found at http://nasible_host_or_ip:4040.
 
 ## Specific Configuration
 

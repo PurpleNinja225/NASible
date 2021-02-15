@@ -24,7 +24,7 @@
     network_mode: "host"
     devices: "{{ plex_devices | default(omit) }}"
     env:
-      TZ: "{{ ansible_nas_timezone }}"
+      TZ: "{{ nasible_timezone }}"
       PUID: "{{ plex_user_id }}"
       PGID: "{{ plex_group_id }}"
       VERSION: "{{ plex_version }}"
@@ -32,8 +32,8 @@
     memory: "{{ plex_memory }}"
     labels:
       traefik.enable: "{{ plex_available_externally }}"
-      traefik.http.routers.plex.rule: "Host(`{{ plex_hostname }}.{{ ansible_nas_domain }}`)"
+      traefik.http.routers.plex.rule: "Host(`{{ plex_hostname }}.{{ nasible_domain }}`)"
       traefik.http.routers.plex.tls.certresolver: "letsencrypt"
-      traefik.http.routers.plex.tls.domains[0].main: "{{ ansible_nas_domain }}"
-      traefik.http.routers.plex.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+      traefik.http.routers.plex.tls.domains[0].main: "{{ nasible_domain }}"
+      traefik.http.routers.plex.tls.domains[0].sans: "*.{{ nasible_domain }}"
       traefik.http.services.plex.loadbalancer.server.port: "32400"

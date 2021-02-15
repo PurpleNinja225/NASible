@@ -24,5 +24,5 @@ Instructions to upgrade from prior to January 2020 ([this]([this](https://github
 
     - **Quick and Dirty:** Copy the contents of your `all.yml` into `inventories/my-nasible/group_vars/nas.yml`.
 
-    - **Nice and Tidy:** Copy only the differences between your own `all.yml` and the distribution `group_vars/all.yml` into `inventories/my-nasible/group_vars/nas.yml`. This is likely to be things like `ansible_nas_hostname`, `samba_shares`, `ansible_nas_timezone`, enabled applications, any application tweaks you've made in config etc.
+    - **Nice and Tidy:** Copy only the differences between your own `all.yml` and the distribution `group_vars/all.yml` into `inventories/my-nasible/group_vars/nas.yml`. This is likely to be things like `nasible_hostname`, `samba_shares`, `nasible_timezone`, enabled applications, any application tweaks you've made in config etc.
 

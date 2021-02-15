@@ -22,8 +22,8 @@
     memory: 1g
     labels:
       traefik.enable: "{{ duplicati_available_externally }}"
-      traefik.http.routers.duplicati.rule: "Host(`{{ duplicati_hostname }}.{{ ansible_nas_domain }}`)"
+      traefik.http.routers.duplicati.rule: "Host(`{{ duplicati_hostname }}.{{ nasible_domain }}`)"
       traefik.http.routers.duplicati.tls.certresolver: "letsencrypt"
-      traefik.http.routers.duplicati.tls.domains[0].main: "{{ ansible_nas_domain }}"
-      traefik.http.routers.duplicati.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+      traefik.http.routers.duplicati.tls.domains[0].main: "{{ nasible_domain }}"
+      traefik.http.routers.duplicati.tls.domains[0].sans: "*.{{ nasible_domain }}"
       traefik.http.services.duplicati.loadbalancer.server.port: "8200"

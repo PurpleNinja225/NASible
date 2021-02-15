@@ -18,4 +18,4 @@ deluge_log_level: "error"
 deluge_port: "8112"
 deluge_hostname: "deluge"
 
-deluge_timezone: "{{ ansible_nas_timezone }}"
+deluge_timezone: "{{ nasible_timezone }}"

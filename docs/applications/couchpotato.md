@@ -9,4 +9,4 @@ CouchPotato enables you to download movies automatically, easily and in the best
 
 Set `couchpotato_enabled: true` in your `inventories/<your_inventory>/nas.yml` file.
 
-The CouchPotato web interface can be found at http://ansible_nas_host_or_ip:5050.
+The CouchPotato web interface can be found at http://nasible_host_or_ip:5050.
