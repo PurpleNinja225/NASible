@@ -1,10 +1,10 @@
 # Project information
 site_name: 'NASible'
 site_description: 'Build a fully functional NAS with an Ubuntu box and this playbook'
-site_author: 'David Stephens & PurpleNinja225'
+site_author: 'PurpleNinja225'
 
 # Configuration
-remote_theme: "mmistakes/minimal-mistakes@4.22.0"
+remote_theme: mmistakes/minimal-mistakes
 
 # Repository
 repo_name: 'PurpleNinja225/NASible'
