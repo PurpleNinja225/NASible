@@ -4,7 +4,7 @@ site_description: 'Build a fully functional NAS with an Ubuntu box and this play
 site_author: 'David Stephens & PurpleNinja225'
 
 # Configuration
-theme: minimal-mistakes-jekyll
+remote_theme: "mmistakes/minimal-mistakes@4.22.0"
 
 # Repository
 repo_name: 'PurpleNinja225/NASible'
