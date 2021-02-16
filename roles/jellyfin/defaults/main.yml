@@ -1,0 +1,21 @@
+---
+# enable or disable the application
+jellyfin_enabled: false
+jellyfin_available_externally: "false"
+
+# directories
+jellyfin_config_directory: "{{ docker_home }}/jellyfin/config"
+jellyfin_logs: "{{ docker_home }}/jellyfin/logs"
+jellyfin_share_directory: "{{ example_share_root }}"
+
+
+# uid / gid
+jellyfin_user_id: "0"
+jellyfin_group_id: "0"
+
+# network
+jellyfin_hostname: "jellyfin"
+jellyfin_port: "12345"
+
+# specs
+jellyfin_memory: "1g"

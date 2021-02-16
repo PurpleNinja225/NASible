@@ -1,0 +1,22 @@
+---
+# enable or disable the application
+joomla_enabled: false
+joomla_available_externally: "false"
+
+# directories
+joomla_config_directory: "{{ docker_home }}/joomla/config"
+joomla_logs: "{{ docker_home }}/joomla/logs"
+joomla_share_directory: "{{ example_share_root }}"
+
+joomla_database_password: "{{ nasible_default_password }}"
+
+# uid / gid
+joomla_user_id: "0"
+joomla_group_id: "0"
+
+# network
+joomla_hostname: "joomla"
+joomla_port: "8181"
+
+# specs
+joomla_memory: "1g"

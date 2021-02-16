@@ -1,0 +1,21 @@
+---
+# enable or disable the application
+youtubedlmaterial_enabled: false
+youtubedlmaterial_available_externally: "false"
+
+# directories
+youtubedlmaterial_config_directory: "{{ docker_home }}/youtubedlmaterial/config"
+youtubedlmaterial_logs: "{{ docker_home }}/youtubedlmaterial/logs"
+youtubedlmaterial_share_directory: "{{ example_share_root }}"
+
+
+# uid / gid
+youtubedlmaterial_user_id: "0"
+youtubedlmaterial_group_id: "0"
+
+# network
+youtubedlmaterial_hostname: "youtubedlmaterial"
+youtubedlmaterial_port: "12345"
+
+# specs
+youtubedlmaterial_memory: "1g"

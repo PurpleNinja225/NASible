@@ -1,0 +1,17 @@
+---
+# enable or disable the application
+gitlab_enabled: false
+gitlab_available_externally: "false"
+
+# directories
+gitlab_config_directory: "{{ docker_home }}/gitlab/config"
+gitlab_data_directory: "{{ docker_home }}/gitlab"
+
+# network
+gitlab_hostname: "gitlab"
+gitlab_port_http: "80"
+gitlab_port_https: "443"
+gitlab_port_ssh: "22"
+
+# specs
+gitlab_memory: "4g"
