@@ -1,0 +1,23 @@
+---
+# enable or disable the application
+calibre_web_enabled: false
+calibre_web_available_externally: "false"
+
+# directories
+calibre_web_config_directory: "{{ docker_home }}/calibre_web/config"
+calibre_web_logs: "{{ docker_home }}/calibre_web/logs"
+calibre_web_books_directory: "{{ books_root }}"
+
+
+# uid / gid
+calibre_web_user_id: "0"
+calibre_web_group_id: "0"
+
+# network
+calibre_web_hostname: "calibre_web"
+calibre_web_port: "8083"
+
+# specs
+calibre_web_memory: "1g"
+
+calibre_web_docker_mods: "linuxserver/calibre-web:calibre"
