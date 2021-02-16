@@ -9,7 +9,7 @@ airsonic_group_id: "1000"
 airsonic_data_directory: "{{ docker_home }}/airsonic"
 airsonic_music_directory: "{{ music_root }}"
 airsonic_podcasts_directory: "{{ podcasts_root }}"
-airsonic_logs_directory: "{{ logs_root }}"/airsonic/airsonic.log
+airsonic_logs_directory: "{{ logs_root }}/airsonic/airsonic.log"
 # network
 airsonic_port: "4040"
 airsonic_hostname: "airsonic"

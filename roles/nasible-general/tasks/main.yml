@@ -23,7 +23,7 @@
   apt:
     upgrade: yes
     state: latest
-  when: keep_packages_updated
+  when: (keep_packages_updated | default(False))
   tags:
     - skip_ansible_lint
 
