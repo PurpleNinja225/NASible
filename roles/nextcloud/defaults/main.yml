@@ -2,12 +2,16 @@
 nextcloud_enabled: false
 nextcloud_available_externally: "false"
 
+nextcloud_image: "linuxserver/nextcloud:21"
+
 # directories
 nextcloud_data_directory: "{{ docker_home }}/nextcloud"
 
 # network
 nextcloud_port: "8080"
 nextcloud_hostname: "nextcloud"
+
+nextcloud_memory: 4g
 
 # username / passwords
 nextcloud_sql_user: "nextcloud-user"
