@@ -1,36 +1,117 @@
 ---
-- name: Create Example_App Directories
+- name: Create InfluxDB and Telegraf Directories
   file:
     path: "{{ item }}"
     state: directory
-    # mode: 0755
   with_items:
-    - "{{ example_app_config_directory }}"
-    - "{{ example_app_logs }}"
+    - "{{ influxdb_data_directory }}"
+    - "{{ telegraf_data_directory }}"
 
-- name: example_app Docker Container
+- name: Create Grafana Directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "472"
+    recurse: yes
+  with_items:
+    - "{{ grafana_data_directory }}"
+    - "{{ grafana_data_directory }}/data"
+    - "{{ grafana_data_directory }}/data/dashboards/nasible"
+    - "{{ grafana_data_directory }}/config/"
+    - "{{ grafana_data_directory }}/config/provisioning"
+    - "{{ grafana_data_directory }}/config/provisioning/datasources"
+    - "{{ grafana_data_directory }}/config/provisioning/dashboards"
+
+- name: InfluxDB
   docker_container:
-    name: example_app
-    image: example_app/example_app
+    name: influxdb
+    image: influxdb
     pull: true
     volumes:
-      - "{{ example_app_config_directory }}:/config:rw"
-      - "{{ example_app_logs }}:/logs:rw"
-      - "{{ example_app_data_directory }}:/data:rw"
-    network_mode: "bridge"
+      - "{{ influxdb_data_directory }}:/var/lib/influxdb:rw"
     ports:
-      - "{{ example_app_port_a }}:80"
-      - "{{ example_app_port_b }}:80"
-    env:
-      TZ: "{{ ansible_nas_timezone }}"
-      PUID: "{{ example_app_user_id }}"
-      PGID: "{{ example_app_group_id }}"
+      - "{{ grafana_influxdb_port }}:8086"
     restart_policy: unless-stopped
-    memory: "{{ example_app_memory }}"
+    env:
+      INFLUXDB_LOGGING_LEVEL: "error"
+    memory: 1g
+
+- name: hddtemp
+  docker_container:
+    name: hddtemp
+    image: drewster727/hddtemp-docker
+    pull: true
+    privileged: true
+    restart_policy: unless-stopped
+    env:
+      HDDTEMP_ARGS: "-q -d -F /dev/sd*"
+      TZ: "{{ nasible_timezone }}"
+    memory: 128m
+
+- name: Template telegraf.conf
+  template:
+    src: telegraf/telegraf.conf
+    dest: "{{ telegraf_data_directory }}/telegraf.conf"
+
+- name: Telegraf
+  docker_container:
+    name: telegraf
+    image: telegraf
+    pull: true
+    links:
+      - hddtemp:hddtemp
+    privileged: true
+    ipc_mode: host
+    volumes:
+      - "{{ telegraf_data_directory }}/telegraf.conf:/etc/telegraf/telegraf.conf:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "/:/hostfs:ro"
+      - "/etc:/hostfs/etc:ro"
+      - "/proc:/hostfs/proc:ro"
+      - "/sys:/hostfs/sys:ro"
+      - "/var:/hostfs/var:ro"
+      - "/run:/hostfs/run:ro"
+    env:
+      HOST_ETC: "/hostfs/etc"
+      HOST_PROC: "/hostfs/proc"
+      HOST_SYS: "/hostfs/sys"
+      HOST_VAR: "/hostfs/var"
+      HOST_RUN: "/hostfs/run"
+      HOST_MOUNT_PREFIX: "/hostfs"
+    restart_policy: unless-stopped
+    memory: 1g
+
+- name: Template Grafana data source
+  template:
+    src: grafana/provisioning/datasources/nasible.yml
+    dest: "{{ grafana_data_directory }}/config/provisioning/datasources/nasible.yml"
+
+- name: Copy NASible Dashboard Provisioner
+  copy:
+    src: grafana/provisioning/dashboards/nasible.yml
+    dest: "{{ grafana_data_directory }}/config/provisioning/dashboards/nasible.yml"
+
+- name: Copy NASible Dashboard
+  copy:
+    src: grafana/dashboards/nasible/nasible-overview.json
+    dest: "{{ grafana_data_directory }}/data/dashboards/nasible/nasible-overview.json"
+
+- name: Grafana
+  docker_container:
+    name: grafana
+    image: grafana/grafana
+    pull: true
+    volumes:
+      - "{{ grafana_data_directory }}/data:/var/lib/grafana:rw"
+      - "{{ grafana_data_directory }}/config/provisioning:/etc/grafana/provisioning:ro"
+    ports:
+      - "{{ grafana_port }}:3000"
+    restart_policy: unless-stopped
+    memory: 1g
     labels:
-      traefik.enable: "{{ example_app_available_externally }}"
-      traefik.http.routers.example_app.rule: "Host(`{{ example_app_hostname }}.{{ ansible_nas_domain }}`)"
-      traefik.http.routers.example_app.tls.certresolver: "letsencrypt"
-      traefik.http.routers.example_app.tls.domains[0].main: "{{ ansible_nas_domain }}"
-      traefik.http.routers.example_app.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
-      traefik.http.services.example_app.loadbalancer.server.port: "80"
+      traefik.enable: "{{ grafana_available_externally }}"
+      traefik.http.routers.grafana.rule: "Host(`grafana.{{ nasible_domain }}`) "
+      traefik.http.routers.grafana.tls.certresolver: "letsencrypt"
+      traefik.http.routers.grafana.tls.domains[0].main: "{{ nasible_domain }}"
+      traefik.http.routers.grafana.tls.domains[0].sans: "*.{{ nasible_domain }}"
+      traefik.http.grafana.netdata.loadbalancer.server.port: "3000"

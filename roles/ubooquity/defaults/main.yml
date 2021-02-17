@@ -1,21 +1,21 @@
 ---
 # enable or disable the application
-example_app_enabled: false
-example_app_available_externally: "false"
+ubooquity_enabled: false
+ubooquity_available_externally: "false"
 
 # directories
-example_app_config_directory: "{{ docker_home }}/example_app/config"
-example_app_logs: "{{ docker_home }}/example_app/logs"
-example_app_share_directory: "{{ example_share_root }}"
+ubooquity_config_directory: "{{ docker_home }}/ubooquity/config"
+ubooquity_logs: "{{ docker_home }}/ubooquity/logs"
+ubooquity_share_directory: "{{ example_share_root }}"
 
 
 # uid / gid
-example_app_user_id: "0"
-example_app_group_id: "0"
+ubooquity_user_id: "0"
+ubooquity_group_id: "0"
 
 # network
-example_app_hostname: "example_app"
-example_app_port: "12345"
+ubooquity_hostname: "ubooquity"
+ubooquity_port: "12345"
 
 # specs
-example_app_memory: "1g"
+ubooquity_memory: "1g"

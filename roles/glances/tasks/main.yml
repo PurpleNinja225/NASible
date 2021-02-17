@@ -1,36 +1,24 @@
----
-- name: Create Example_App Directories
-  file:
-    path: "{{ item }}"
-    state: directory
-    # mode: 0755
-  with_items:
-    - "{{ example_app_config_directory }}"
-    - "{{ example_app_logs }}"
-
-- name: example_app Docker Container
+- name: Glances Docker Container
   docker_container:
-    name: example_app
-    image: example_app/example_app
+    name: glances
+    image: nicolargo/glances
     pull: true
-    volumes:
-      - "{{ example_app_config_directory }}:/config:rw"
-      - "{{ example_app_logs }}:/logs:rw"
-      - "{{ example_app_data_directory }}:/data:rw"
-    network_mode: "bridge"
     ports:
-      - "{{ example_app_port_a }}:80"
-      - "{{ example_app_port_b }}:80"
+      - "{{ glances_port_one }}:61208"
+      - "{{ glances_port_two }}:61209"
+    volumes:
+      #- "/glances.conf:/glances/conf/glances.conf"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "/etc/timezone:/etc/timezone:ro"
+    pid_mode: host
     env:
-      TZ: "{{ ansible_nas_timezone }}"
-      PUID: "{{ example_app_user_id }}"
-      PGID: "{{ example_app_group_id }}"
+      GLANCES_OPT: "-w"
     restart_policy: unless-stopped
-    memory: "{{ example_app_memory }}"
+    memory: 1g
     labels:
-      traefik.enable: "{{ example_app_available_externally }}"
-      traefik.http.routers.example_app.rule: "Host(`{{ example_app_hostname }}.{{ ansible_nas_domain }}`)"
-      traefik.http.routers.example_app.tls.certresolver: "letsencrypt"
-      traefik.http.routers.example_app.tls.domains[0].main: "{{ ansible_nas_domain }}"
-      traefik.http.routers.example_app.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
-      traefik.http.services.example_app.loadbalancer.server.port: "80"
+      traefik.enable: "{{ glances_available_externally }}"
+      traefik.http.routers.glances.rule: "Host(`glances.{{ nasible_domain }}`)"
+      traefik.http.routers.glances.tls.certresolver: "letsencrypt"
+      traefik.http.routers.glances.tls.domains[0].main: "{{ nasible_domain }}"
+      traefik.http.routers.glances.tls.domains[0].sans: "*.{{ nasible_domain }}"
+      traefik.http.services.glances.loadbalancer.server.port: "61208"
