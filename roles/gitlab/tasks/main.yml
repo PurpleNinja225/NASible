@@ -28,7 +28,7 @@
     memory: 4g
     labels:
       traefik.enable: "{{ gitlab_available_externally }}"
-      traefik.http.routers.gitlab.rule: "Host(`{{gitlab_hostname }}.{{ nasible_domain }}`)"
+      traefik.http.routers.gitlab.rule: "Host(`{{ gitlab_hostname }}.{{ nasible_domain }}`)"
       traefik.http.routers.gitlab.tls.certresolver: "letsencrypt"
       traefik.http.routers.gitlab.tls.domains[0].main: "{{ nasible_domain }}"
       traefik.http.routers.gitlab.tls.domains[0].sans: "*.{{ nasible_domain }}"
