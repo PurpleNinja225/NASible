@@ -7,7 +7,7 @@
 
 - name: Create Calibre-web Docker Container
   docker_container:
-    name: "{{ calibre_web_hostname}}"
+    name: "{{ calibre_web_hostname }}"
     image: linuxserver/calibre-web:latest
     pull: true
     volumes:
@@ -25,7 +25,7 @@
     memory: "{{ calibre_web_memory }}"
     labels:
       traefik.enable: "{{ calibre_web_available_externally }}"
-      traefik.http.routers.calibre.rule: "Host(`{{ calibre_web_hostname}}.{{ nasible_domain }}`)"
+      traefik.http.routers.calibre.rule: "Host(`{{ calibre_web_hostname }}.{{ nasible_domain }}`)"
       traefik.http.routers.calibre.tls.certresolver: "letsencrypt"
       traefik.http.routers.calibre.tls.domains[0].main: "{{ nasible_domain }}"
       traefik.http.routers.calibre.tls.domains[0].sans: "*.{{ nasible_domain }}"
