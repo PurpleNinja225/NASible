@@ -15,7 +15,11 @@ krusader_group_id: "0"
 
 # network
 krusader_hostname: "krusader"
-krusader_port: "12345"
+krusader_port_http: "5900"
+krusader_port_vnc: "5800"
 
 # specs
 krusader_memory: "1g"
+krusader_browse_directory: "/"
+krusader_secure_connection: "0"
+krusader_vnc_password: "{{ nasible_default_password }}"

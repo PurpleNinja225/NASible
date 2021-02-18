@@ -1,36 +1,30 @@
 ---
-- name: Create Example_App Directories
+- name: Create Virtual Desktop Directories
   file:
     path: "{{ item }}"
     state: directory
-    # mode: 0755
   with_items:
-    - "{{ example_app_config_directory }}"
-    - "{{ example_app_logs }}"
+    - "{{ vd_data_directory }}"
+    - "{{ vd_data_directory }}/home"
 
-- name: example_app Docker Container
+- name: Create users file
+  template:
+    src: "templates/virtual_desktop/users.txt.j2"
+    dest: "{{ vd_data_directory }}/users.txt"
+
+- name: Virtual Desktop Container
   docker_container:
-    name: example_app
-    image: example_app/example_app
+    name: virtual_desktop
+    image: "{{ vd_docker_image }}"
     pull: true
     volumes:
-      - "{{ example_app_config_directory }}:/config:rw"
-      - "{{ example_app_logs }}:/logs:rw"
-      - "{{ example_app_data_directory }}:/data:rw"
-    network_mode: "bridge"
+      - "{{ vd_data_directory }}/users.txt:/root/createusers.txt:ro"
+      - "{{ vd_data_directory }}/home:/home:rw"
+      - "{{ samba_shares_root }}:/samba:rw"
+      - "{{ docker_home }}:/docker:rw"
+      - "/etc/timezone:/etc/timezone:ro"
     ports:
-      - "{{ example_app_port_a }}:80"
-      - "{{ example_app_port_b }}:80"
-    env:
-      TZ: "{{ ansible_nas_timezone }}"
-      PUID: "{{ example_app_user_id }}"
-      PGID: "{{ example_app_group_id }}"
+      - "{{ vd_rdp_port }}:3389"
+    privileged: true
     restart_policy: unless-stopped
-    memory: "{{ example_app_memory }}"
-    labels:
-      traefik.enable: "{{ example_app_available_externally }}"
-      traefik.http.routers.example_app.rule: "Host(`{{ example_app_hostname }}.{{ ansible_nas_domain }}`)"
-      traefik.http.routers.example_app.tls.certresolver: "letsencrypt"
-      traefik.http.routers.example_app.tls.domains[0].main: "{{ ansible_nas_domain }}"
-      traefik.http.routers.example_app.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
-      traefik.http.services.example_app.loadbalancer.server.port: "80"
+    memory: 2g

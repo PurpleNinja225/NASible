@@ -1,36 +1,36 @@
----
-- name: Create Example_App Directories
+- name: Create Jellyfin Directories
   file:
     path: "{{ item }}"
     state: directory
-    # mode: 0755
   with_items:
-    - "{{ example_app_config_directory }}"
-    - "{{ example_app_logs }}"
+    - "{{ jellyfin_config_directory }}"
 
-- name: example_app Docker Container
+- name: Jellyfin Docker Container
   docker_container:
-    name: example_app
-    image: example_app/example_app
+    name: "{{ jellyfin_hostname }}"
+    image: linuxserver/jellyfin
     pull: true
     volumes:
-      - "{{ example_app_config_directory }}:/config:rw"
-      - "{{ example_app_logs }}:/logs:rw"
-      - "{{ example_app_data_directory }}:/data:rw"
-    network_mode: "bridge"
+      - "{{ jellyfin_config_directory }}:/config:rw"
+      - "{{ jellyfin_movies_directory }}:/movies:{{ jellyfin_movies_permissions }}"
+      - "{{ jellyfin_music_directory }}:/music:{{ jellyfin_music_permissions }}"
+      - "{{ jellyfin_photos_directory }}:/photos:{{ jellyfin_photos_permissions }}"
+      - "{{ jellyfin_tv_directory }}:/tv:{{ jellyfin_tv_permissions }}"
+      - "{{ jellyfin_books_directory }}:/books:{{ jellyfin_tv_permissions }}"
+      - "{{ jellyfin_audiobooks_directory }}:/audiobooks:{{ jellyfin_tv_permissions }}"
     ports:
-      - "{{ example_app_port_a }}:80"
-      - "{{ example_app_port_b }}:80"
+      - "{{ jellyfin_port_http }}:8096"
+      - "{{ jellyfin_port_https }}:8920"
     env:
-      TZ: "{{ ansible_nas_timezone }}"
-      PUID: "{{ example_app_user_id }}"
-      PGID: "{{ example_app_group_id }}"
+      TZ: "{{ nasible_timezone }}"
+      PUID: "{{ jellyfin_user_id }}"
+      PGID: "{{ jellyfin_group_id }}"
     restart_policy: unless-stopped
-    memory: "{{ example_app_memory }}"
+    memory: "{{ jellyfin_memory }}"
     labels:
-      traefik.enable: "{{ example_app_available_externally }}"
-      traefik.http.routers.example_app.rule: "Host(`{{ example_app_hostname }}.{{ ansible_nas_domain }}`)"
-      traefik.http.routers.example_app.tls.certresolver: "letsencrypt"
-      traefik.http.routers.example_app.tls.domains[0].main: "{{ ansible_nas_domain }}"
-      traefik.http.routers.example_app.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
-      traefik.http.services.example_app.loadbalancer.server.port: "80"
+      traefik.enable: "{{ jellyfin_available_externally }}"
+      traefik.http.routers.jellyfin.rule: "Host(`{{ jellyfin_hostname }}.{{ nasible_domain }}`)"
+      traefik.http.routers.jellyfin.tls.certresolver: "letsencrypt"
+      traefik.http.routers.jellyfin.tls.domains[0].main: "{{ nasible_domain }}"
+      traefik.http.routers.jellyfin.tls.domains[0].sans: "*.{{ nasible_domain }}"
+      traefik.http.services.jellyfin.loadbalancer.server.port: "8096"

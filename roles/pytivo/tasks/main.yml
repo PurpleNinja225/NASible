@@ -1,36 +1,39 @@
 ---
-- name: Create Example_App Directories
+- name: PyTivo - create config directory
   file:
     path: "{{ item }}"
     state: directory
-    # mode: 0755
+    mode: 0777
   with_items:
-    - "{{ example_app_config_directory }}"
-    - "{{ example_app_logs }}"
+    - "{{ pytivo_config_directory }}"
 
-- name: example_app Docker Container
+- name: PyTivo - install Docker container
   docker_container:
-    name: example_app
-    image: example_app/example_app
+    name: pytivo
+    image: pinion/docker-pytivo
     pull: true
-    volumes:
-      - "{{ example_app_config_directory }}:/config:rw"
-      - "{{ example_app_logs }}:/logs:rw"
-      - "{{ example_app_data_directory }}:/data:rw"
-    network_mode: "bridge"
     ports:
-      - "{{ example_app_port_a }}:80"
-      - "{{ example_app_port_b }}:80"
+      - "9032:9032"
+      - "2190:2190/udp"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "{{ pytivo_config_directory }}:/config:rw"
+      - "{{ pytivo_movies_directory }}:/movies:ro"
+      - "{{ pytivo_tv_directory }}:/tv:ro"
+      - "{{ pytivo_photos_directory }}:/photos:ro"
+      - "{{ pytivo_music_directory }}:/music:ro"
+      - "{{ pytivo_podcasts_directory }}:/podcasts:ro"
+    network_mode: "host"
     env:
-      TZ: "{{ ansible_nas_timezone }}"
-      PUID: "{{ example_app_user_id }}"
-      PGID: "{{ example_app_group_id }}"
+      TZ: "{{ nasible_timezone }}"
+      PUID: "{{ pytivo_user_id }}"
+      PGID: "{{ pytivo_group_id }}"
     restart_policy: unless-stopped
-    memory: "{{ example_app_memory }}"
+    memory: 1g
     labels:
-      traefik.enable: "{{ example_app_available_externally }}"
-      traefik.http.routers.example_app.rule: "Host(`{{ example_app_hostname }}.{{ ansible_nas_domain }}`)"
-      traefik.http.routers.example_app.tls.certresolver: "letsencrypt"
-      traefik.http.routers.example_app.tls.domains[0].main: "{{ ansible_nas_domain }}"
-      traefik.http.routers.example_app.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
-      traefik.http.services.example_app.loadbalancer.server.port: "80"
+      traefik.enable: "{{ pytivo_available_externally }}"
+      traefik.http.routers.pytivo.rule: "Host(`pytivo.{{ nasible_domain }}`)"
+      traefik.http.routers.pytivo.tls.certresolver: "letsencrypt"
+      traefik.http.routers.pytivo.tls.domains[0].main: "{{ nasible_domain }}"
+      traefik.http.routers.pytivo.tls.domains[0].sans: "*.{{ nasible_domain }}"
+      traefik.http.services.pytivo.loadbalancer.server.port: "9032"

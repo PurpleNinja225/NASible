@@ -3,7 +3,7 @@
     path: "{{ item }}"
     state: directory
   with_items:
-    - "{{ calibre_data_directory }}/config"
+    - "{{ calibre_web_data_directory }}/config"
 
 - name: Create Calibre-web Docker Container
   docker_container:
@@ -13,18 +13,18 @@
     volumes:
       - "{{ calibre_web_data_directory }}/config:/config"
       - "{{ calibre_web_books_directory }}:/books"
-      - "{{ calibre_web_logs }}":/logs"
+      - "{{ calibre_web_logs }}:/logs"
     env:
       TZ: "{{ nasible_timezone }}"
-      PUID: "{{ calibre_user_id }}"
-      PGID: "{{ calibre_group_id }}"
-      DOCKER_MODS: "{{ calibre_ebook_conversion }}"
+      PUID: "{{ calibre_web_user_id }}"
+      PGID: "{{ calibre_web_group_id }}"
+      DOCKER_MODS: "{{ calibre_web_ebook_conversion }}"
     ports:
-      - "{{ calibre_port }}:8083"
+      - "{{ calibre_web_port }}:8083"
     restart_policy: unless-stopped
-    memory: "{{ calibre_web_memory"
+    memory: "{{ calibre_web_memory }}"
     labels:
-      traefik.enable: "{{ calibre_available_externally }}"
+      traefik.enable: "{{ calibre_web_available_externally }}"
       traefik.http.routers.calibre.rule: "Host(`{{ calibre_web_hostname}}.{{ nasible_domain }}`)"
       traefik.http.routers.calibre.tls.certresolver: "letsencrypt"
       traefik.http.routers.calibre.tls.domains[0].main: "{{ nasible_domain }}"

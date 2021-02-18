@@ -14,13 +14,13 @@
     owner: "472"
     recurse: yes
   with_items:
-    - "{{ grafana_data_directory }}"
-    - "{{ grafana_data_directory }}/data"
-    - "{{ grafana_data_directory }}/data/dashboards/nasible"
-    - "{{ grafana_data_directory }}/config/"
-    - "{{ grafana_data_directory }}/config/provisioning"
-    - "{{ grafana_data_directory }}/config/provisioning/datasources"
-    - "{{ grafana_data_directory }}/config/provisioning/dashboards"
+    - "{{ grafana_stats_data_directory }}"
+    - "{{ grafana_stats_data_directory }}/data"
+    - "{{ grafana_stats_data_directory }}/data/dashboards/nasible"
+    - "{{ grafana_stats_data_directory }}/config/"
+    - "{{ grafana_stats_data_directory }}/config/provisioning"
+    - "{{ grafana_stats_data_directory }}/config/provisioning/datasources"
+    - "{{ grafana_stats_data_directory }}/config/provisioning/dashboards"
 
 - name: InfluxDB
   docker_container:
@@ -30,7 +30,7 @@
     volumes:
       - "{{ influxdb_data_directory }}:/var/lib/influxdb:rw"
     ports:
-      - "{{ grafana_influxdb_port }}:8086"
+      - "{{ grafana_stats_influxdb_port }}:8086"
     restart_policy: unless-stopped
     env:
       INFLUXDB_LOGGING_LEVEL: "error"
@@ -84,33 +84,33 @@
 - name: Template Grafana data source
   template:
     src: grafana/provisioning/datasources/nasible.yml
-    dest: "{{ grafana_data_directory }}/config/provisioning/datasources/nasible.yml"
+    dest: "{{ grafana_stats_data_directory }}/config/provisioning/datasources/nasible.yml"
 
 - name: Copy NASible Dashboard Provisioner
   copy:
     src: grafana/provisioning/dashboards/nasible.yml
-    dest: "{{ grafana_data_directory }}/config/provisioning/dashboards/nasible.yml"
+    dest: "{{ grafana_stats_data_directory }}/config/provisioning/dashboards/nasible.yml"
 
 - name: Copy NASible Dashboard
   copy:
     src: grafana/dashboards/nasible/nasible-overview.json
-    dest: "{{ grafana_data_directory }}/data/dashboards/nasible/nasible-overview.json"
+    dest: "{{ grafana_stats_data_directory }}/data/dashboards/nasible/nasible-overview.json"
 
 - name: Grafana
   docker_container:
-    name: grafana
+    name: "{{ grafana_stats_hostname }}"
     image: grafana/grafana
     pull: true
     volumes:
-      - "{{ grafana_data_directory }}/data:/var/lib/grafana:rw"
-      - "{{ grafana_data_directory }}/config/provisioning:/etc/grafana/provisioning:ro"
+      - "{{ grafana_stats_data_directory }}/data:/var/lib/grafana:rw"
+      - "{{ grafana_stats_data_directory }}/config/provisioning:/etc/grafana/provisioning:ro"
     ports:
-      - "{{ grafana_port }}:3000"
+      - "{{ grafana_stats_port }}:3000"
     restart_policy: unless-stopped
-    memory: 1g
+    memory: "{{ grafana_stats_memory }}"
     labels:
-      traefik.enable: "{{ grafana_available_externally }}"
-      traefik.http.routers.grafana.rule: "Host(`grafana.{{ nasible_domain }}`) "
+      traefik.enable: "{{ grafana_stats_available_externally }}"
+      traefik.http.routers.grafana.rule: "Host(`{{ grafana_stats_hostname }}.{{ nasible_domain }}`) "
       traefik.http.routers.grafana.tls.certresolver: "letsencrypt"
       traefik.http.routers.grafana.tls.domains[0].main: "{{ nasible_domain }}"
       traefik.http.routers.grafana.tls.domains[0].sans: "*.{{ nasible_domain }}"

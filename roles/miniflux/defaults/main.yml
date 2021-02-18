@@ -13,6 +13,9 @@ miniflux_share_directory: "{{ example_share_root }}"
 miniflux_user_id: "0"
 miniflux_group_id: "0"
 
+miniflux_admin_username: "{{ nasible_user }}"
+miniflux_admin_password: "{{ nasible_default_password }}"
+
 # network
 miniflux_hostname: "miniflux"
 miniflux_port: "12345"

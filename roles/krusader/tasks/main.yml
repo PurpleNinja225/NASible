@@ -1,36 +1,35 @@
+
 ---
-- name: Create Example_App Directories
+- name: Krusader Directory
   file:
     path: "{{ item }}"
     state: directory
-    # mode: 0755
   with_items:
-    - "{{ example_app_config_directory }}"
-    - "{{ example_app_logs }}"
+    - "{{ krusader_config_directory }}/krusader"
 
-- name: example_app Docker Container
+- name: Krusader Docker Container
   docker_container:
-    name: example_app
-    image: example_app/example_app
+    name: "{{ krusader_hostname }}"
+    image: djaydev/krusader:latest
     pull: true
     volumes:
-      - "{{ example_app_config_directory }}:/config:rw"
-      - "{{ example_app_logs }}:/logs:rw"
-      - "{{ example_app_data_directory }}:/data:rw"
-    network_mode: "bridge"
+      - "{{ krusader_config_directory }}:/config:rw"
+      - "{{ krusader_browse_directory }}:/mnt/fs"
     ports:
-      - "{{ example_app_port_a }}:80"
-      - "{{ example_app_port_b }}:80"
+      - "{{ krusader_port_http }}:5800"
+      - "{{ krusader_port_vnc }}:5900"
     env:
-      TZ: "{{ ansible_nas_timezone }}"
-      PUID: "{{ example_app_user_id }}"
-      PGID: "{{ example_app_group_id }}"
+      USER_ID: "{{ krusader_user_id }}"
+      GROUP_ID: "{{ krusader_group_id }}"
+      SECURE_CONNECTION: "{{ krusader_secure_connection }}"
+      TZ: "{{ nasible_timezone }}"
+      VNC_PASSWORD: "{{ krusader_vnc_password }}"
     restart_policy: unless-stopped
-    memory: "{{ example_app_memory }}"
+    memory: "{{ krusader_memory }}"
     labels:
-      traefik.enable: "{{ example_app_available_externally }}"
-      traefik.http.routers.example_app.rule: "Host(`{{ example_app_hostname }}.{{ ansible_nas_domain }}`)"
-      traefik.http.routers.example_app.tls.certresolver: "letsencrypt"
-      traefik.http.routers.example_app.tls.domains[0].main: "{{ ansible_nas_domain }}"
-      traefik.http.routers.example_app.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
-      traefik.http.services.example_app.loadbalancer.server.port: "80"
+      traefik.enable: "{{ krusader_available_externally }}"
+      traefik.http.routers.krusader.rule: "Host(`{{ krusader_hostname }}.{{ nasible_domain }}`)"
+      traefik.http.routers.krusader.tls.certresolver: "letsencrypt"
+      traefik.http.routers.krusader.tls.domains[0].main: "{{ nasible_domain }}"
+      traefik.http.routers.krusader.tls.domains[0].sans: "*.{{ nasible_domain }}"
+      traefik.http.services.krusader.loadbalancer.server.port: "5800"
