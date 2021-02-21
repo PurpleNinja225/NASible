@@ -1,3 +1,4 @@
+
 ---
 - name: Create InfluxDB and Telegraf Directories
   file:
@@ -11,7 +12,6 @@
   file:
     path: "{{ item }}"
     state: directory
-    owner: "472"
     recurse: yes
   with_items:
     - "{{ grafana_stats_data_directory }}"

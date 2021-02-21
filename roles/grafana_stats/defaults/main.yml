@@ -6,8 +6,6 @@ grafana_stats_available_externally: "false"
 # directories
 grafana_stats_config_directory: "{{ docker_home }}/grafana_stats/config"
 grafana_stats_logs: "{{ docker_home }}/grafana_stats/logs"
-grafana_stats_share_directory: "{{ example_share_root }}"
-
 
 # uid / gid
 grafana_stats_user_id: "0"
