@@ -18,8 +18,9 @@
     env:
       SIGNUPS_ALLOWED: "{{ bitwarden_allow_signups }}"
       ADMIN_TOKEN: "{{ bitwarden_admin_token }}"
-      LOG_FILE: "/data/bitwarden.log"
+      LOG_FILE: "{{ bitwarden_logs_directory }}"
       WEBSOCKET_ENABLED: "true"
+      SIGNUPS_VERIFIED: "{{ bitwarden_verify_signups }}"
     labels:
       traefik.http.routers.bitwarden.rule: "Host(`{{ bitwarden_hostname }}.{{ nasible_domain }}`)"
       traefik.http.routers.bitwarden.tls.certresolver: "letsencrypt"
