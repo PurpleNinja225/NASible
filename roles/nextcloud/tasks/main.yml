@@ -7,37 +7,37 @@
     - "{{ nextcloud_data_directory }}/nextcloud"
     - "{{ nextcloud_data_directory }}/mysql"
 
-# - name: Nextcloud Mysql Docker Container
-#   docker_container:
-#     name: "{{ nextcloud_hostname }}-mysql"
-#     image: mysql:5.7
-#     pull: true
-#     volumes:
-#        - "{{ nextcloud_data_directory }}/mysql:/var/lib/mysql:rw"
-#     env:
-#       MYSQL_DATABASE: "nextcloud"
-#       MYSQL_USER: "{{ nextcloud_sql_user }}"
-#       MYSQL_PASSWORD: "{{ nextcloud_sql_password }}"
-#       MYSQL_ROOT_PASSWORD: "{{ nextcloud_sql_root_password }}"
-#     restart_policy: unless-stopped
-#     memory: 2g
+- name: Nextcloud Mysql Docker Container
+  docker_container:
+    name: "{{ nextcloud_hostname }}-mysql"
+    image: mysql
+    pull: true
+    volumes:
+      - "{{ nextcloud_data_directory }}/mysql:/var/lib/mysql:rw"
+    env:
+      MYSQL_DATABASE: "nextcloud"
+      MYSQL_USER: "{{ nextcloud_sql_user }}"
+      MYSQL_PASSWORD: "{{ nextcloud_sql_password }}"
+      MYSQL_ROOT_PASSWORD: "{{ nextcloud_sql_root_password }}"
+    restart_policy: unless-stopped
+    memory: 2g
 
 - name: Nextcloud Docker Container
   docker_container:
     name: "{{ nextcloud_hostname }}"
     image: "{{ nextcloud_image }}"
     pull: true
-#     links:
-#         - "{{ nextcloud_hostname }}-mysql:mysql"
+    links:
+      - "{{ nextcloud_hostname }}-mysql:mysql"
     volumes:
       - "{{ nextcloud_data_directory }}/nextcloud:/var/www/html:rw"
     ports:
       - "{{ nextcloud_port }}:80"
     env:
-#       MYSQL_HOST: "mysql"
-#       MYSQL_DATABASE: "nextcloud"
-#       MYSQL_USER: "{{ nextcloud_sql_user }}"
-#       MYSQL_PASSWORD: "{{ nextcloud_sql_password }}"
+      MYSQL_HOST: "mysql"
+      MYSQL_DATABASE: "nextcloud"
+      MYSQL_USER: "{{ nextcloud_sql_user }}"
+      MYSQL_PASSWORD: "{{ nextcloud_sql_password }}"
       NEXTCLOUD_TRUSTED_DOMAINS: "{{ nextcloud_hostname }}.{{ nasible_domain }}"
     restart_policy: unless-stopped
     memory: "{{ nextcloud_memory }}"

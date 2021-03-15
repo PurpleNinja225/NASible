@@ -1,6 +1,6 @@
 ---
 - hosts: all
-
+  become: yes
   pre_tasks:
     - import_tasks: tasks/users.yml
       tags: users

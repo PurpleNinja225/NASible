@@ -20,9 +20,6 @@
       - "{{ airsonic_podcasts_directory }}:/var/podcasts:rw"
     ports:
       - "{{ airsonic_port }}:4040"
-    env:
-      - PUID: "{{ airsonic_user_id }}"
-      - GUID: "{{ airsonic_group_id }}"
     restart_policy: unless-stopped
     memory: "{{ airsonic_memory }}"
     labels:

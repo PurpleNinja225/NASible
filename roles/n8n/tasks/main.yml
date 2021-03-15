@@ -8,7 +8,7 @@
 
 - name: n8n Docker Container
   docker_container:
-    name: n8n
+    name: "{{ n8n_hostname }}"
     image: n8nio/n8n
     pull: true
     ports:

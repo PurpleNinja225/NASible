@@ -22,19 +22,26 @@
       WEBSOCKET_ENABLED: "true"
       SIGNUPS_VERIFIED: "{{ bitwarden_verify_signups }}"
     labels:
-      traefik.http.routers.bitwarden.rule: "Host(`{{ bitwarden_hostname }}.{{ nasible_domain }}`)"
+      traefik.enable: "{{ bitwarden_available_externally }}"
+      traefik.http.routers.bitwarden.rule: "Host(`{{ bitwarden_hostname }}.{{ nasible_domain }}"
+      traefik.http.routers.bitwarden.tls: "true"
       traefik.http.routers.bitwarden.tls.certresolver: "letsencrypt"
-      traefik.http.routers.bitwarden.tls.domains[0].main: "{{ nasible_domain }}"
-      traefik.http.routers.bitwarden.tls.domains[0].sans: "*.{{ nasible_domain }}"
+      traefik.http.routers.bitwarden.service: "{{ bitwarden_hostname }}"
       traefik.http.services.bitwarden.loadbalancer.server.port: "80"
+
+      traefik.http.routers.bitwarden-websocket.rule: "Host(`{{ bitwarden_hostname }}.{{ nasible_domain }}`) && Path(`/notifications/hub`)"
+      traefik.http.routers.bitwarden-websocket.tls: "true"
+      traefik.http.routers.bitwarden-websocket.tls.certresolver: "letsencrypt"
+      traefik.http.routers.bitwarden-websocket.service: "{{ bitwarden_hostname }}-websocket"
+      traefik.http.services.bitwarden-websocket.loadbalancer.server.port: "3012"
     restart_policy: unless-stopped
     memory: "{{ bitwarden_memory }}"
 
 - name: Bitwarden Backup Container
   docker_container:
-    name: bitwarden-backup
+    name: "{{ bitwarden_hostname }}-backup"
     image: bruceforce/bw_backup:latest
     pull: true
     restart_policy: unless-stopped
-    volumes_from: bitwarden
+    volumes_from: "{{ bitwarden_hostname }}"
     memory: 1g

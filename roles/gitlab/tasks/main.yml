@@ -3,8 +3,6 @@
   file:
     path: "{{ item }}"
     state: directory
-    owner: gitlab
-    group: gitlab
   with_items:
     - "{{ gitlab_data_directory }}/config"
     - "{{ gitlab_data_directory }}/log"
