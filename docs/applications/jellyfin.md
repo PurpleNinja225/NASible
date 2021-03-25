@@ -10,7 +10,7 @@ similar functionality.
 ## Usage
 
 Set `jellyfin_enabled: true` in your `inventories/<your_inventory>/nas.yml` file. There are further
-parameters you can edit such as `movies_root`, `tv_root` or `music_root` lower down. 
+parameters you can edit such as `movies_root`, `tv_root` or `music_root` lower down.
 
 ## Specific Configuration
 
@@ -32,7 +32,7 @@ lines in `all.yml`:
 so that they end in `ro` instead of `rw`. Note that jellyfin will not be able to
 delete files then, which might be exactly what you want. However, you will not
 have the option to store cover art in the related folders. Always leave the
-configuration directory read/write. 
+configuration directory read/write.
 
 ## File system considerations
 
@@ -47,13 +47,13 @@ documentation](../zfs/zfs_configuration.md) has an example of this.
 jellyfin is very fussy about how movies and TV shows must be named to enable
 automatic downloads of cover art and metadata. In short, movie files should
 follow how movies are listed in the [IMDb](https://www.imdb.com/), including the
-year of publication: 
+year of publication:
 
 ```
         movies/Bride of Frankenstein (1935).mp4
 ```
 
-Note the spaces. You should probably remove colons and other special characters. 
+Note the spaces. You should probably remove colons and other special characters.
 
 TV shows require a folder structure with the name of the series - again if
 possible with the year of publication - followed by sub-folders for the

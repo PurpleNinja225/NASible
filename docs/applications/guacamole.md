@@ -14,4 +14,4 @@ The default username and password is `guacadmin`. Change it!
 
 ## What to connect to?
 
-You can run a virtual desktop from your NASible box, check out the [Virtual Desktop docs](virtual_desktop.md). 
+You can run a virtual desktop from your NASible box, check out the [Virtual Desktop docs](virtual_desktop.md).

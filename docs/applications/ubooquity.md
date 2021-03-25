@@ -21,4 +21,3 @@ Important note: if you want to access Ubooquity externally through Traefik (at u
 The admin portal is not exposed through Traefik. You can access the admin portal on port 2203.
 
 Upon your first run, the address is http://nasible_host_or_ip:2203/ubooquity/admin. You will be able to set the admin password here.
-

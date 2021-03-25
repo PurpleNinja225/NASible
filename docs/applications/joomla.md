@@ -21,3 +21,4 @@ The Joomla web interface can be found at http://nasible_host_or_ip:8181.
     - Database: `joomla`
     - Username: `root`
     - Password: whatever you set for `joomla_database_password`.
+    

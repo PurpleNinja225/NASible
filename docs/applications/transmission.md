@@ -23,4 +23,3 @@ openvpn_config: uk686.nordvpn.com.udp
 ```
 
 See https://hub.docker.com/r/haugene/transmission-openvpn/ for supported VPN providers.
-
