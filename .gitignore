@@ -4,7 +4,9 @@ site
 *.retry
 *.log
 inventories
-
+roles/bertvv.samba
+roles/geerlingguy.docker
+roles/geerlingguy.nfs
 # Vim
 [._]sw[a-p]
 

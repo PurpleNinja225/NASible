@@ -46,7 +46,7 @@ nasible_extra_packages:
   - ctop
 
 # Sets the timezone for NASible
-# You can find a list here 
+# You can find a list here
 # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 nasible_timezone: Etc/UTC
 
@@ -124,7 +124,7 @@ samba_map_to_guest: Bad Password
 # The NetBIOS hostname used by Samba on your network
 samba_netbios_name: "{{ nasible_hostname }}"
 
-# The description that'll appear next to your NASible box 
+# The description that'll appear next to your NASible box
 samba_server_string: "NASible Shares"
 
 # Shares you want published over Samba.
@@ -246,8 +246,8 @@ samba_shares:
 airsonic_enabled: false
 airsonic_available_externally: "false"
 
-airsonic_user_id: "1000"
-airsonic_group_id: "1000"
+airsonic_user_id: "0"
+airsonic_group_id: "0"
 
 # directories
 airsonic_data_directory: "{{ docker_home }}/airsonic"

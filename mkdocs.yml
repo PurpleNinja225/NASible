@@ -1,7 +1,7 @@
 # Project information
 site_name: 'NASible'
 site_description: 'Build a fully functional NAS with an Ubuntu box and this playbook'
-site_author: 'David Stephens & PurpleNinja225'
+site_author: 'PurpleNinja225'
 
 # Configuration
 theme:

@@ -3,8 +3,7 @@
 <img src="https://raw.githubusercontent.com/PurpleNinja225/nasible/master/misc/nasible_logo.png">
 
 A fork/parallel of Dave Stephan's ansible-nas, where we hope to build a standardized and flexible NAS
-with a vider variety of configuration available. We will strive to maintain application compatibility with ansible-nas as long as possible
-and add any additional features to ansible-nas when possible.
+with a wider variety of configuration available.
 
 ## What NASible Can Set Up
 
@@ -94,12 +93,12 @@ and add any additional features to ansible-nas when possible.
 ## What This Could Do
 
 NASible can run anything that's in a Docker image, which is why Portainer is
-included. A NAS configuration is a pretty personal thing so NASible is just a framework to help get you started. 
-If you have some pretty usefull containers make a PR, other's will appriciate it.
+included as the default manager. A home NAS is a usually a pretty personal thing and unique to each individual so NASible aims to be a modular framework to help get you started with wide array of supported applications built in!
+We are always looking to expand the range of applications supported, so if you run some pretty usefull containers make a PR, or even mention it as an application request other's will appriciate it.
 
 ## What This Doesn't Do
 
-NASible doesn't set up your disk partitions, primarily because getting it wrong can be incredibly destructive.
+NASible doesn't set up your disk partitions, primarily because getting it wrong can be incredibly destructive or cause potential data loss.
 That aside, configuring partitions is usually a one-time (or very infrequent) event, so there's not much to be
 gained by automating it. Check out the [docs](https://purpleninja225.github.io/NASible/) for recommended setups.
 
@@ -125,10 +124,10 @@ Assuming that your Ubuntu system disk is separate from your storage (it should b
 
 ## Requirements
 
-* NASible targets the latest Ubuntu LTS release, which is currently Ubuntu
+* NASible targets and (tests on) the latest Ubuntu LTS release, which is currently Ubuntu
   Server 20.04 LTS.
 * You can run NASible on (almost) whatever you like, read the docs for more info.
-I run a Dell Poweredge r510 at work and a small custom NAS box.
+I run a small custom NAS box with a Xeon X5650 and 48G of memory. Be sure to know the resources that adding a docker container may require and have a system with sufficiant resources to do so.
 
 ## Getting Help
 
