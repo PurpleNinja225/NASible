@@ -2,6 +2,7 @@
     "recommendations": [
         "haaaad.ansible",
         "ybaumes.highlight-trailing-white-spaces",
-        "bungcip.better-toml"
+        "bungcip.better-toml",
+        "cschleiden.vscode-github-actions"
     ]
 }

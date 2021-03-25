@@ -1,4 +1,4 @@
-
+---
 # ooooo      ooo       .o.        .oooooo..o  o8o   .o8       oooo
 # `888b.     `8'      .888.      d8P'    `Y8  `"'  "888       `888
 #  8 `88b.    8      .8"888.     Y88bo.      oooo   888oooo.   888   .ooooo.
@@ -912,7 +912,7 @@ n8n_enabled: false
 
 # Networking
 n8n_available_externally: "false"
-n8n_port: 5678
+n8n_port: "5678"
 n8n_hostname: "n8n"
 
 # Directories
@@ -1224,7 +1224,7 @@ syncthing_volumes:
   - "{{ syncthing_data_directory }}:/var/syncthing/"
 
 # network
-syncthing_port: 8384
+syncthing_port: "8384"
 syncthing_hostname: "syncthing"
 
 #############################################################################
@@ -1366,9 +1366,9 @@ transmission_with_openvpn_enabled: false
 transmission_with_openvpn_available_externally: "false"
 
 # directories
-transmission_config_directory: "{{ docker_home }}/transmission/config"
-transmission_download_directory: "{{ downloads_root }}"
-transmission_watch_directory: "{{ torrents_root }}"
+# transmission_config_directory: "{{ docker_home }}/transmission/config"
+# transmission_download_directory: "{{ downloads_root }}"
+# transmission_watch_directory: "{{ torrents_root }}"
 
 # uid / gid
 transmission_openvpn_user_id: "0"
@@ -1455,7 +1455,7 @@ vd_users:
   - username: "{{ nasible_user }}"
     password: "{{ nasible_default_password }}"
     sudo: "Y"
-vd_rdp_port: 3389
+vd_rdp_port: "3389"
 
 # network
 virtual_desktop_hostname: "virtual_desktop"
