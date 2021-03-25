@@ -1,3 +1,4 @@
+---
 - name: Create Bitwarden Directories
   file:
     path: "{{ item }}"

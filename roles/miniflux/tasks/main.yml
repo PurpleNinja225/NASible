@@ -1,3 +1,4 @@
+---
 - name: Create Miniflux Directories
   file:
     path: "{{ item }}"
@@ -16,9 +17,9 @@
       POSTGRES_USER: "miniflux"
       POSTGRES_PASSWORD: "supersecure"
     restart_policy: unless-stopped
-    memory: 1g
+    memory: "{{ miniflux_postgres_memory }}"
 
-- name: Create Miniflux container
+- name: Create Miniflux Docker Container
   docker_container:
     name: "{{ miniflux_hostname }}"
     image: miniflux/miniflux:latest

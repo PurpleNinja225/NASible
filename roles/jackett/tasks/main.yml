@@ -19,6 +19,7 @@
     env:
       TZ: "{{ nasible_timezone }}"
     restart_policy: unless-stopped
+    memory: "{{ jackett_memory }}"
     labels:
       traefik.enable: "{{ jackett_available_externally }}"
       traefik.http.routers.jackett.rule: "Host(`{{ jackett_hostname }}.{{ nasible_domain }}`)"

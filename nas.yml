@@ -83,6 +83,11 @@
         - deluge
       when: (deluge_enabled | default(False))
 
+    - role: dokuwiki
+      tags:
+        - dokuwiki
+      when: (dokuwiki_enabled | default(False))
+
     - role: duplicati
       tags:
         - duplicati
@@ -145,7 +150,7 @@
 
     - role: jackett
       tags:
-        - jackettfalse
+        - jackett
       when: (jackett_enabled | default(False))
 
     - role: jellyfin
@@ -197,6 +202,11 @@
       tags:
         - n8n_enabled
       when: (n8n_enabled | default(False))
+
+    - role: netbootxyz
+      tags:
+        - netbootxyz
+      when: (netbootxyz_enabled | default(False))
 
     - role: netdata
       tags:
@@ -295,7 +305,7 @@
 
     - role: transmission-with-openvpn
       tags:
-        - transmission_with_openvpn_enabled
+        - transmission_with_openvpn
       when: (transmission_with_openvpn_enabled | default(False))
 
     - role: traefik

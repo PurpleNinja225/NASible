@@ -1,20 +1,20 @@
-- name: Glances Docker Container
+---
+- name: Create Glances Docker Container
   docker_container:
     name: glances
     image: nicolargo/glances
     pull: true
-    ports:
-      - "{{ glances_port_one }}:61208"
-      - "{{ glances_port_two }}:61209"
     volumes:
-      #- "/glances.conf:/glances/conf/glances.conf"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
       - "/etc/timezone:/etc/timezone:ro"
     pid_mode: host
+    ports:
+      - "{{ glances_port_one }}:61208"
+      - "{{ glances_port_two }}:61209"
     env:
       GLANCES_OPT: "-w"
     restart_policy: unless-stopped
-    memory: 1g
+    memory: "{{ glances_memory }}"
     labels:
       traefik.enable: "{{ glances_available_externally }}"
       traefik.http.routers.glances.rule: "Host(`glances.{{ nasible_domain }}`)"

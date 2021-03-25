@@ -48,4 +48,3 @@
       traefik.http.routers.nextcloud.tls.domains[0].main: "{{ nasible_domain }}"
       traefik.http.routers.nextcloud.tls.domains[0].sans: "*.{{ nasible_domain }}"
       traefik.http.services.nextcloud.loadbalancer.server.port: "80"
-

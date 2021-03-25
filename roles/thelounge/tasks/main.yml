@@ -33,4 +33,3 @@
       traefik.http.routers.thelounge.tls.domains[0].main: "{{ nasible_domain }}"
       traefik.http.routers.thelounge.tls.domains[0].sans: "*.{{ nasible_domain }}"
       traefik.http.services.thelounge.loadbalancer.server.port: "9000"
-

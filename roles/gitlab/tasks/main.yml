@@ -8,7 +8,7 @@
     - "{{ gitlab_data_directory }}/log"
     - "{{ gitlab_data_directory }}/data"
 
-- name: Create Gitlab container
+- name: Create Gitlab Docker Container
   docker_container:
     name: "{{ gitlab_hostname }}"
     image: gitlab/gitlab-ce:latest
@@ -17,13 +17,15 @@
       - "{{ gitlab_data_directory }}/config:/etc/gitlab:rw"
       - "{{ gitlab_data_directory }}/log:/var/log/gitlab:rw"
       - "{{ gitlab_data_directory }}/data:/var/opt/gitlab:rw"
+    network_mode: "bridge"
     ports:
       - "{{ gitlab_port_http }}:80"
       - "{{ gitlab_port_https }}:443"
       - "{{ gitlab_port_ssh }}:22"
     hostname: "{{ gitlab_hostname }}.{{ nasible_domain }}"
     restart_policy: unless-stopped
-    memory: 4g
+    hostname: "{{ gitlab_hostname }}.{{ ansible_nas_domain }}"
+    memory: "{{ gitlab_memory }}"
     labels:
       traefik.enable: "{{ gitlab_available_externally }}"
       traefik.http.routers.gitlab.rule: "Host(`{{ gitlab_hostname }}.{{ nasible_domain }}`)"

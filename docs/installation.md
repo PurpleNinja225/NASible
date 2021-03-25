@@ -27,7 +27,7 @@ You can run NASible from the computer you plan to use for your NAS, or from a re
 
     `cp -rfp inventories/sample inventories/my-nasible`
 
-5. Review `group_vars/all.yml`. Change settings by overriding them in `inventories/my-nasible/group_vars/nas.yml`.
+5. Review `group_vars/all.yml` for general settings and `roles/[application]/defaults/main.yml` for individual applications. Change settings by overriding them in `inventories/my-ansible-nas/group_vars/nas.yml`.
 
 6. Update `inventories/my-nasible/inventory`.
 

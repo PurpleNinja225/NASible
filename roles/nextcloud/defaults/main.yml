@@ -17,3 +17,7 @@ nextcloud_memory: 4g
 nextcloud_sql_user: "nextcloud-user"
 nextcloud_sql_password: "nextcloud-pass"
 nextcloud_sql_root_password: "nextcloud-secret"
+
+# specs
+nextcloud_memory: 1g
+nextcloud_mysql_memory: 1g
