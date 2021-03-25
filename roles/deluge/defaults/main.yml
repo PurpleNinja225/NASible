@@ -19,3 +19,5 @@ deluge_port: "8112"
 deluge_hostname: "deluge"
 
 deluge_timezone: "{{ nasible_timezone }}"
+
+deluge_memory: "1g"
