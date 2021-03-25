@@ -31,5 +31,5 @@ jobs:
 
       - name: Linting
         run: |
-          ansible-lint ./nas.yml -x 106,208
+          ansible-lint ./nas.yml -vvv -x 106,208
           yamllint .
