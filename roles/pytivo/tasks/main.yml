@@ -29,7 +29,7 @@
       PUID: "{{ pytivo_user_id }}"
       PGID: "{{ pytivo_group_id }}"
     restart_policy: unless-stopped
-    memory: 1g
+    memory: "{{ pytivo_memory }}"
     labels:
       traefik.enable: "{{ pytivo_available_externally }}"
       traefik.http.routers.pytivo.rule: "Host(`pytivo.{{ nasible_domain }}`)"

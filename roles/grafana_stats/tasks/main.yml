@@ -33,7 +33,7 @@
     restart_policy: unless-stopped
     env:
       INFLUXDB_LOGGING_LEVEL: "error"
-    memory: 1g
+    memory: "{{ influxdb_memory }}"
 
 - name: hddtemp
   docker_container:
@@ -45,7 +45,7 @@
     env:
       HDDTEMP_ARGS: "-q -d -F /dev/sd*"
       TZ: "{{ nasible_timezone }}"
-    memory: 128m
+    memory: "128m"
 
 - name: Template telegraf.conf
   template:
@@ -78,7 +78,7 @@
       HOST_RUN: "/hostfs/run"
       HOST_MOUNT_PREFIX: "/hostfs"
     restart_policy: unless-stopped
-    memory: 1g
+    memory: "{{ telegraf_memory }}"
 
 - name: Template Grafana data source
   template:

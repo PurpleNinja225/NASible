@@ -45,4 +45,4 @@
     pull: true
     restart_policy: unless-stopped
     volumes_from: "{{ bitwarden_hostname }}"
-    memory: 1g
+    memory: "{{ bitwarden_backup_memory }}"

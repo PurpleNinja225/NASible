@@ -16,4 +16,4 @@ duplicati_group_id: "0"
 duplicati_port: "8200"
 duplicati_hostname: "duplicati"
 
-duplicati_memory: 1g
+duplicati_memory: "1g"

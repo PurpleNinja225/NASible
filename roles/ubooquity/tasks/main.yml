@@ -25,6 +25,7 @@
       - "{{ ubooquity_port_webui }}:2202"
       - "{{ ubooquity_port_admin }}:2203"
     restart_policy: unless-stopped
+    memory: "{{ ubooquity_memory }}"
     labels:
       traefik.enable: "{{ ubooquity_available_externally }}"
       traefik.http.routers.ubooquity.rule: "Host(`ubooquity.{{ nasible_domain }}`)"

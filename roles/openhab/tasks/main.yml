@@ -43,7 +43,7 @@
       OPENHAB_HTTP_PORT: "{{ openhab_port_http }}"
       OPENHAB_HTTPS_PORT: "{{ openhab_port_https }}"
     restart_policy: unless-stopped
-    memory: 1g
+    memory: "{{ openhab_memory }}"
     labels:
       traefik.enable: "{{ openhab_available_externally }}"
       traefik.http.routers.openhab.rule: "Host(`openhab.{{ nasible_domain }}`)"

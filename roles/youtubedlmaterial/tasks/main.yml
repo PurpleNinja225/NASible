@@ -28,7 +28,7 @@
       ALLOW_CONFIG_MUTATIONS: "true"
       TZ: "{{ nasible_timezone }}"
     restart_policy: always
-    memory: 1g
+    memory: "{{ youtubedlmaterial_memory }}"
     labels:
       traefik.enable: "{{ youtubedlmaterial_available_externally }}"
       traefik.http.routers.youtubedlmaterial.rule: "Host(`{{ youtubedlmaterial_hostname }}.{{ nasible_domain }}`)"

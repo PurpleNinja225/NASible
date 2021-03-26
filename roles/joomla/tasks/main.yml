@@ -19,7 +19,7 @@
       MYSQL_USER: "joomla"
       MYSQL_ROOT_PASSWORD: "{{ joomla_database_password }}"
     restart_policy: unless-stopped
-    memory: 1g
+    memory: "{{ joomla_mysql_memory }}"
 
 - name: Joomla Docker Container
   docker_container:

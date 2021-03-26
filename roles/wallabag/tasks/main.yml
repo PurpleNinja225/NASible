@@ -20,7 +20,7 @@
     env:
       SYMFONY__ENV__DOMAIN_NAME: "https://wallabag.{{ nasible_domain }}"
     restart_policy: unless-stopped
-    memory: 1g
+    memory: "{{ wallabag_memory }}"
     labels:
       traefik.enable: "{{ wallabag_available_externally }}"
       traefik.http.routers.wallabag.rule: "Host(`wallabag.{{ nasible_domain }}`)"

@@ -20,7 +20,7 @@
       MYSQL_PASSWORD: "{{ nextcloud_sql_password }}"
       MYSQL_ROOT_PASSWORD: "{{ nextcloud_sql_root_password }}"
     restart_policy: unless-stopped
-    memory: 2g
+    memory: "{{ nextcloud_mysql_memory }}"
 
 - name: Nextcloud Docker Container
   docker_container:

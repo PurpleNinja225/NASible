@@ -27,4 +27,4 @@
       - "{{ mosquitto_port_a }}:1883"
       - "{{ mosquitto_port_b }}:9001"
     restart_policy: unless-stopped
-    memory: 1g
+    memory: "{{ mosquitto_memory }}"
