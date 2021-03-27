@@ -1,6 +1,8 @@
-# Airsonic
+# Airsonic-Advanced
 
-Homepage: [https://github.com/airsonic-advanced/airsonic-advanced](https://github.com/airsonic-advanced/airsonic-advanced)
+<img align="right" src="https://airsonic.github.io/img/logo.png">
+
+[Airsonic Github](https://github.com/airsonic/airsonic) || [Airsonic-Advanced Github](https://github.com/airsonic-advanced/airsonic-advanced)
 
 Airsonic-Advanced is a more modern implementation of the Airsonic fork with several key performance and feature enhancements. It adds and supersedes several features in Airsonic.
 
@@ -20,7 +22,7 @@ Written in Java, Airsonic runs on most platforms, including Windows, Mac, Linux 
 
 Set `airsonic_enabled: true` in your `inventories/<your_inventory>/nas.yml` file.
 
-The Airsonic web interface can be found at http://nasible_host_or_ip:4040.
+The Airsonic web interface can be found at `http://nasible_host_or_ip:4040`.
 
 ## Specific Configuration
 
