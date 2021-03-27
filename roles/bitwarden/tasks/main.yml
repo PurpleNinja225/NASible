@@ -9,7 +9,7 @@
 - name: Create Bitwarden Docker Container
   docker_container:
     name: "{{ bitwarden_hostname }}"
-    image: bitwardenrs/server:latest
+    image: "{{ bitwarden_docker_image }}"
     pull: true
     ports:
       - "{{ bitwarden_port_a }}:80"
@@ -41,8 +41,15 @@
 - name: Bitwarden Backup Container
   docker_container:
     name: "{{ bitwarden_hostname }}-backup"
-    image: bruceforce/bw_backup:latest
+    image: "{{ bitwarden_backup_docker_image }}"
     pull: true
     restart_policy: unless-stopped
     volumes_from: "{{ bitwarden_hostname }}"
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    env:
+      TIMESTAMP: "{{ bitwarden_backup_timestamp }}"
+      UID: "{{ bitwarden_user_id }}"
+      GID: "{{ bitwarden_group_id }}"
     memory: "{{ bitwarden_backup_memory }}"
