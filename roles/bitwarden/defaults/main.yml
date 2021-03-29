@@ -19,3 +19,14 @@ bitwarden_verify_signups: "false"
 
 bitwarden_hostname: "bitwarden"
 bitwarden_memory: 2g
+
+# docker images
+bitwarden_docker_image: bitwardenrs/server:latest
+bitwarden_backup_docker_image: bruceforce/bw_backup:latest
+
+# uid / gid
+bitwarden_user_id: "0"
+bitwarden_group_id: "0"
+
+# Set to true to append timestamp to the BACKUP_FILE
+bitwarden_backup_timestamp: "false"

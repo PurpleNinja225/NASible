@@ -109,20 +109,25 @@
         - get_iplayer
       when: (get_iplayer_enabled | default(False))
 
-    - role: gitlab
-      tags:
-        - gitlab
-      when: (gitlab_enabled | default(False))
-
     - role: gitea
       tags:
         - gitea
       when: (gitea_enabled | default(False))
 
+    - role: gitlab
+      tags:
+        - gitlab
+      when: (gitlab_enabled | default(False))
+
     - role: glances
       tags:
         - glances
       when: (glances_enabled | default(False))
+
+    - role: gotify
+      tags:
+        - gotify
+      when: (gotify_enabled | default(False))
 
     - role: grafana_stats
       tags:
