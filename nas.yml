@@ -254,6 +254,11 @@
         - openhab
       when: (openhab_enabled | default(False))
 
+    - role: openvpn-client
+      tags:
+        - openvpn-client
+      when: (openvpn-client_enabled | default(False))
+
     - role: plex
       tags:
         - plex
