@@ -1,0 +1,37 @@
+---
+### NASible Settings ########################################################
+openvpn-client_enabled: false
+
+
+### Directories/Volumes #####################################################
+openvpn-client_data_directory: "{{ docker_home }}/openvpn-client/vpn"
+openvpn-client_ca_crt: ""
+openvpn-client_client_crt: ""
+openvpn-client_client_key: ""
+openvpn-client_vpn_conf: ""
+
+
+### Network Settings ########################################################
+openvpn-client_hostname: "openvpn-client"
+openvpn-client_network_mode: ""
+openvpn-client_port_deluge: "8112:8112"
+
+
+### Environmental Settings ##################################################
+openvpn-client_TZ: "{{ nasible_timezone }}"
+openvpn-client_username: "upYytspEAk"
+openvpn-client_password: "FX6TjMQdpR"
+
+
+## UID/GID (if supported) ##
+# openvpn-client_user_id: ""
+# openvpn-client_group_id: ""
+
+
+### Container Specs #########################################################
+openvpn-client_cpus: ""
+openvpn-client_domain: "{{ nasible_domain }}"
+openvpn-client_image: "dperson/openvpn-client"
+openvpn-client_memory: ""
+openvpn-client_name: "openvpn-client"
+openvpn-client_restarts: "no"

@@ -1,0 +1,44 @@
+---
+
+- name: Create Openvpn-client Directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    # mode: 0755
+  with_items:
+    - "{{ openvpn-client_data_directory }}"
+
+- name: Copy VPN Files to Openvpn-client
+  file:
+    src: "{{ item }}"
+    state: file
+    dest: "{{ openvpn-client_data_directory }}"
+  with_items:
+    - "{{ openvpn-client_ca_crt }}"
+    - "{{ openvpn-client_client_crt }}"
+    - "{{ openvpn-client_client_key }}"
+    - "{{ openvpn-client_vpn_conf }}"
+
+
+- name: Create Openvpn-client Docker Container
+  docker_container:
+    name: "{{ openvpn-client_name }}"
+    image: "{{ openvpn-client_image }}"
+    pull: true
+    volumes:
+      - "{{ openvpn-client_data_directory }}:/vpn:rw"
+    domainname: "{{ openvpn-client_domain }}"
+    hostname: "{{ openvpn-client_hostname }}"
+    network_mode: "{{ openvpn-client_network_mode }}"
+    devices: "/dev/net/tun"
+    capabilities: "NET_ADMIN"
+    command: "'-f' '' '-a' '{{ openvpn-client_username }};{{ openvpn-client_password }}'"
+    ports:
+      - "{{ openvpn-client_port_deluge }}"
+    env:
+      TZ: "{{ nasible_timezone }}"
+      # PUID: "{{ openvpn-client_user_id }}"
+      # PGID: "{{ openvpn-client_group_id }}"
+    cpus: "{{ openvpn-client_cpus }}"
+    memory: "{{ openvpn-client_memory }}"
+    restart_policy: "{{ openvpn-client_restarts }}"
