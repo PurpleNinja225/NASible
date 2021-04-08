@@ -10,7 +10,6 @@
 - name: Copy VPN Files to Openvpn-client
   file:
     src: "{{ item }}"
-    state: file
     dest: "{{ openvpn_client_data_directory }}"
   with_items:
     - "{{ openvpn_client_ca_crt }}"

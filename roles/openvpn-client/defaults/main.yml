@@ -5,22 +5,22 @@ openvpn_client_enabled: false
 
 ### Directories/Volumes #####################################################
 openvpn_client_data_directory: "{{ docker_home }}/openvpn-client/vpn"
-openvpn_client_ca_crt: ""
-openvpn_client_client_crt: ""
-openvpn_client_client_key: ""
-openvpn_client_vpn_conf: ""
+openvpn_client_ca_crt: "path/to/ca.crt"
+openvpn_client_client_crt: "path/to/client.crt"
+openvpn_client_client_key: "path/to/client.key"
+openvpn_client_vpn_conf: "path/to/vpn.conf"
 
 
 ### Network Settings ########################################################
 openvpn_client_hostname: "openvpn-client"
 openvpn_client_network_mode: ""
-openvpn_client_port_deluge: "8112:8112"
+openvpn_client_port_a: "0000:0000"
 
 
 ### Environmental Settings ##################################################
 openvpn_client_TZ: "{{ nasible_timezone }}"
-openvpn_client_username: "upYytspEAk"
-openvpn_client_password: "FX6TjMQdpR"
+openvpn_client_username: "abcdabcd123123"
+openvpn_client_password: "abcdabcd123123"
 
 
 ## UID/GID (if supported) ##
