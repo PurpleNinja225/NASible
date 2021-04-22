@@ -143,11 +143,3 @@ Getting help is easy! You can:
 ## Contributing
 
 Contributions are always welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) first.
-
-## Support
-
-If you've enjoyed NASible as much as I do working on it, please consider [buying the original creator a coffee](https://ko-fi.com/davestephens) :coffee:
-
-## Thanks
-
-Thanks to the awesome dudes at [JetBrains](https://www.jetbrains.com/?from=Ansible-NAS) for supplying core contributors with JetBrains Open Source licenses!
