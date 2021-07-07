@@ -5,28 +5,33 @@
     state: directory
   with_items:
     - "{{ bazarr_data_directory }}"
+    - "{{ bazarr_logs }}"
+
 
 - name: Create Bazarr Docker Container
   docker_container:
     name: "{{ bazarr_hostname }}"
-    image: linuxserver/bazarr
+    image: "{{ bazarr_image }}"
     pull: true
     volumes:
+      - "{{ bazarr_config_directory }}:/config:rw"
+      - "{{ bazarr_logs }}:/logs:rw"
       - "{{ bazarr_tv_directory }}:/tv:rw"
-      - "{{ bazarr_movies_directory }}:/movies:rw"
-      - "{{ bazarr_data_directory }}:/config:rw"
+      - "{{ bazarr_movies_directory }}:/movies"
+    domainname: "{{ bazarr_domain }}"
+    hostname: "{{ bazarr_hostname }}"
+    network_mode: "{{ bazarr_network_mode }}"
     ports:
-      - "{{ bazarr_port }}:6767"
+      - "{{ bazarr_port_web }}:6767"
     env:
       TZ: "{{ nasible_timezone }}"
       PUID: "{{ bazarr_user_id }}"
       PGID: "{{ bazarr_group_id }}"
-    restart_policy: unless-stopped
+    cpuset_cpus:  "{{ bazarr_cpus }}"
     memory: "{{ bazarr_memory }}"
+    restart_policy: "{{ bazarr_restarts }}"
     labels:
       traefik.enable: "{{ bazarr_available_externally }}"
       traefik.http.routers.bazarr.rule: "Host(`{{ bazarr_hostname }}.{{ nasible_domain }}`)"
       traefik.http.routers.bazarr.tls.certresolver: "letsencrypt"
-      traefik.http.routers.bazarr.tls.domains[0].main: "{{ nasible_domain }}"
-      traefik.http.routers.bazarr.tls.domains[0].sans: "*.{{ nasible_domain }}"
       traefik.http.services.bazarr.loadbalancer.server.port: "6767"

@@ -1,19 +1,34 @@
 ---
+### NASible Settings ########################################################
 bazarr_enabled: false
-bazarr_available_externally: "false"
+bazarr_available_externally: false
 
-# directories
-bazarr_data_directory: "{{ docker_home }}/bazarr/config"
+
+### Directories/Volumes #####################################################
+bazarr_config_directory: "{{ docker_home }}/bazarr/config"
 bazarr_tv_directory: "{{ tv_root }}"
 bazarr_movies_directory: "{{ movies_root }}"
+bazarr_logs: "{{ logs_root }}/bazarr/"
 
-# uid/gid
-bazarr_user_id: "0"
-bazarr_group_id: "0"
 
-# network
-bazarr_port: "6767"
+### Network Settings ########################################################
 bazarr_hostname: "bazarr"
+bazarr_network_mode: ""
+bazarr_port_web: "6767"
 
-# specs
-bazarr_memory: 1g
+
+### Environmental Settings ##################################################
+bazarr_TZ: "{{ nasible_timezone }}"
+
+## UID/GID (if supported) ##
+bazarr_user_id: "1000"
+bazarr_group_id: "1000"
+
+
+### Container Specs #########################################################
+bazarr_cpus: ""
+bazarr_domain: "{{ nasible_domain }}"
+bazarr_image: "linuxserver/bazarr"
+bazarr_memory: ""
+bazarr_name: "bazarr"
+bazarr_restarts: "unless-stopped"
