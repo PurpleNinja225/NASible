@@ -1,22 +1,36 @@
 ---
-# enable airsonic and make it available externally
+### NASible Settings ########################################################
 airsonic_enabled: false
-airsonic_available_externally: "false"
+airsonic_available_externally: false
 
-# uid and gid to use
+
+### Directories/Volumes #####################################################
+airsonic_data_directory: "{{ docker_home }}/airsonic/data"
+airsonic_logs: "{{ logs_root }}/airsonic/"
+airsonic_music_directory: "{{ music_root }}"
+airsonic_playlists_directory: "{{ playlists_root }}"
+airsonic_podcasts_directory: "{{ podcasts_root }}"
+
+
+### Network Settings ########################################################
+airsonic_hostname: "airsonic"
+airsonic_network_mode: ""
+airsonic_port_web: "4040"
+airsonic_port_upnp: "4041"
+
+
+### Environmental Settings ##################################################
+airsonic_TZ: "{{ nasible_timezone }}"
+
+## UID/GID (if supported) ##
 airsonic_user_id: "1000"
 airsonic_group_id: "1000"
 
-# directories
-airsonic_data_directory: "{{ docker_home }}/airsonic"
-airsonic_config_directory: "{{ airsonic_data_directory }}/config"
-airsonic_music_directory: "{{ music_root }}"
-airsonic_podcasts_directory: "{{ podcasts_root }}"
-airsonic_playlists_directory: "{{ playlists_root }}"
 
-# network
-airsonic_port: "4040"
-
-# specs
-airsonic_hostname: "airsonic"
-airsonic_memory: 1g
+### Container Specs #########################################################
+airsonic_cpus: ""
+airsonic_domain: "{{ nasible_domain }}"
+airsonic_image: "airsonicadvanced/airsonic-advanced:latest"
+airsonic_memory: ""
+airsonic_name: "airsonic"
+airsonic_restarts: "unless-stopped"
