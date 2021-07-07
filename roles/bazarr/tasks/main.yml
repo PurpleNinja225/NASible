@@ -27,7 +27,7 @@
       TZ: "{{ nasible_timezone }}"
       PUID: "{{ bazarr_user_id }}"
       PGID: "{{ bazarr_group_id }}"
-    cpuset_cpus:  "{{ bazarr_cpus }}"
+    cpuset_cpus: "{{ bazarr_cpus }}"
     memory: "{{ bazarr_memory }}"
     restart_policy: "{{ bazarr_restarts }}"
     labels:
