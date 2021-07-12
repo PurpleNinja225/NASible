@@ -30,7 +30,7 @@
       LOG_FILE: "{{ bitwarden_logs_directory }}"
       WEBSOCKET_ENABLED: "{{ bitwarden_websocket_enabled }}"
       SIGNUPS_VERIFIED: "{{ bitwarden_verify_signups }}"
-    cpuset_cpus:  "{{ bitwarden_cpus }}"
+    cpuset_cpus: "{{ bitwarden_cpus }}"
     memory: "{{ bitwarden_memory }}"
     restart_policy: "{{ bitwarden_restarts }}"
     labels:
