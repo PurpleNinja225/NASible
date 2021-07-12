@@ -3,28 +3,39 @@
   file:
     path: "{{ item }}"
     state: directory
+    # mode: 0755
   with_items:
-    - "{{ bitwarden_data_directory }}"
+    - "{{ bitwarden_config_directory }}"
+    - "{{ bitwarden_logs_directory }}"
+
 
 - name: Create Bitwarden Docker Container
   docker_container:
-    name: "{{ bitwarden_hostname }}"
-    image: "{{ bitwarden_docker_image }}"
+    name: "{{ bitwarden_name }}"
+    image: "{{ bitwarden_image }}"
     pull: true
-    ports:
-      - "{{ bitwarden_port_a }}:80"
-      - "{{ bitwarden_port_b }}:3012"
     volumes:
-      - "{{ bitwarden_data_directory }}:/data:rw"
+      - "{{ bitwarden_config_directory }}:/data:rw"
+      - "{{ bitwarden_logs_directory }}:/logs:rw"
+    domainname: "{{ bitwarden_domain }}"
+    hostname: "{{ bitwarden_hostname }}"
+    network_mode: "{{ bitwarden_network_mode }}"
+    ports:
+      - "{{ bitwarden_port_web }}:80"
+      - "{{ bitwarden_port_socket }}:3012"
     env:
-      SIGNUPS_ALLOWED: "{{ bitwarden_allow_signups }}"
+      TZ: "{{ nasible_timezone }}"
+#      SIGNUPS_ALLOWED: "{{ bitwarden_allow_signups }}"
       ADMIN_TOKEN: "{{ bitwarden_admin_token }}"
       LOG_FILE: "{{ bitwarden_logs_directory }}"
-      WEBSOCKET_ENABLED: "true"
+      WEBSOCKET_ENABLED: "{{ bitwarden_websocket_enabled }}"
       SIGNUPS_VERIFIED: "{{ bitwarden_verify_signups }}"
+    cpuset_cpus:  "{{ bitwarden_cpus }}"
+    memory: "{{ bitwarden_memory }}"
+    restart_policy: "{{ bitwarden_restarts }}"
     labels:
       traefik.enable: "{{ bitwarden_available_externally }}"
-      traefik.http.routers.bitwarden.rule: "Host(`{{ bitwarden_hostname }}.{{ nasible_domain }}"
+      traefik.http.routers.bitwarden.rule: "Host(`{{ bitwarden_hostname }}.{{ nasible_domain }}`)"
       traefik.http.routers.bitwarden.tls: "true"
       traefik.http.routers.bitwarden.tls.certresolver: "letsencrypt"
       traefik.http.routers.bitwarden.service: "{{ bitwarden_hostname }}"
@@ -35,13 +46,11 @@
       traefik.http.routers.bitwarden-websocket.tls.certresolver: "letsencrypt"
       traefik.http.routers.bitwarden-websocket.service: "{{ bitwarden_hostname }}-websocket"
       traefik.http.services.bitwarden-websocket.loadbalancer.server.port: "3012"
-    restart_policy: unless-stopped
-    memory: "{{ bitwarden_memory }}"
 
 - name: Bitwarden Backup Container
   docker_container:
     name: "{{ bitwarden_hostname }}-backup"
-    image: "{{ bitwarden_backup_docker_image }}"
+    image: "{{ bitwarden_backup_image }}"
     pull: true
     restart_policy: unless-stopped
     volumes_from: "{{ bitwarden_hostname }}"
